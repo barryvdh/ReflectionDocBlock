@@ -82,6 +82,35 @@ class ReturnTag extends Tag
     }
 
     /**
+     * Set the type section of the variable
+     *
+     * @param string $type
+     * @return $this
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+        $this->types = null;
+        $this->content = null;
+        return $this;
+    }
+
+    /**
+     * Add a type to the type section of the variable
+     *
+     * @param string $type
+     * @return $this
+     */
+    public function addType($type)
+    {
+        $this->type = $this->type . Collection::OPERATOR_OR . $type;
+        $this->types = null;
+        $this->content = null;
+        return $this;
+    }
+
+
+    /**
      * Returns the type collection.
      * 
      * @return void
