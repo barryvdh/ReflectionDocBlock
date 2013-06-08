@@ -151,7 +151,7 @@ class Collection extends \ArrayObject
             return '';
         }
 
-        if($this->shouldBeAbsolute($type)){
+        if($this->isRelativeType($type) && $this->shouldBeAbsolute($type)){
             return self::OPERATOR_NAMESPACE . $type;
         }
 
