@@ -151,15 +151,16 @@ class Collection extends \ArrayObject
             return '';
         }
 
-        if($this->isRelativeType($type) && $this->shouldBeAbsolute($type)){
-            return self::OPERATOR_NAMESPACE . $type;
-        }
-
         if ($this->isTypeAnArray($type)) {
             return $this->expand(substr($type, 0, -2)) . self::OPERATOR_ARRAY;
         }
 
         if ($this->isRelativeType($type) && !$this->isTypeAKeyword($type)) {
+
+            if($this->shouldBeAbsolute($type)){
+                return self::OPERATOR_NAMESPACE . $type;
+            }
+
             $type_parts = explode(self::OPERATOR_NAMESPACE, $type, 2);
 
             $namespace_aliases = $this->context->getNamespaceAliases();
