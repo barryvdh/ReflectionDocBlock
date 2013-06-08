@@ -36,7 +36,7 @@ class ReturnTag extends Tag
     public function getContent()
     {
         if (null === $this->content) {
-            $this->content = "{$this->type} {$this->description}";
+            $this->content = "{$this->getType()} {$this->description}";
         }
 
         return $this->content;
