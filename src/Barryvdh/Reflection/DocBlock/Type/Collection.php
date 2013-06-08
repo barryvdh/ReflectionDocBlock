@@ -151,6 +151,10 @@ class Collection extends \ArrayObject
             return '';
         }
 
+        if($this->shouldBeAbsolute($type)){
+            return self::OPERATOR_NAMESPACE . $type;
+        }
+
         if ($this->isTypeAnArray($type)) {
             return $this->expand(substr($type, 0, -2)) . self::OPERATOR_ARRAY;
         }
@@ -217,5 +221,17 @@ class Collection extends \ArrayObject
     {
         return ($type[0] !== self::OPERATOR_NAMESPACE)
             || $this->isTypeAKeyword($type);
+    }
+
+    /**
+     * Detects if the type should actually be absolute, by checking if it exists.
+     *
+     * @param string $type A relative or absolute type as defined in the
+     *     phpDocumentor documentation.
+     *
+     * @return bool
+     */
+    protected function shouldBeAbsolute($type){
+        return class_exists($type);
     }
 }
