@@ -10,9 +10,9 @@
  * @link      http://phpdoc.org
  */
 
-namespace phpDocumentor\Reflection\DocBlock\Tag;
+namespace Barryvdh\Reflection\DocBlock\Tag;
 
-use phpDocumentor\Reflection\DocBlock\Tag;
+use Barryvdh\Reflection\DocBlock\Tag;
 
 /**
  * Reflection class for a @version tag in a Docblock.

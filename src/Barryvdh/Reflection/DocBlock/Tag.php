@@ -10,9 +10,9 @@
  * @link      http://phpdoc.org
  */
 
-namespace phpDocumentor\Reflection\DocBlock;
+namespace Barryvdh\Reflection\DocBlock;
 
-use phpDocumentor\Reflection\DocBlock;
+use Barryvdh\Reflection\DocBlock;
 
 /**
  * Parses a tag definition for a DocBlock.
@@ -59,43 +59,43 @@ class Tag implements \Reflector
      */
     private static $tagHandlerMappings = array(
         'author'
-            => '\phpDocumentor\Reflection\DocBlock\Tag\AuthorTag',
+            => '\Barryvdh\Reflection\DocBlock\Tag\AuthorTag',
         'covers'
-            => '\phpDocumentor\Reflection\DocBlock\Tag\CoversTag',
+            => '\Barryvdh\Reflection\DocBlock\Tag\CoversTag',
         'deprecated'
-            => '\phpDocumentor\Reflection\DocBlock\Tag\DeprecatedTag',
+            => '\Barryvdh\Reflection\DocBlock\Tag\DeprecatedTag',
         'example'
-            => '\phpDocumentor\Reflection\DocBlock\Tag\ExampleTag',
+            => '\Barryvdh\Reflection\DocBlock\Tag\ExampleTag',
         'link'
-            => '\phpDocumentor\Reflection\DocBlock\Tag\LinkTag',
+            => '\Barryvdh\Reflection\DocBlock\Tag\LinkTag',
         'method'
-            => '\phpDocumentor\Reflection\DocBlock\Tag\MethodTag',
+            => '\Barryvdh\Reflection\DocBlock\Tag\MethodTag',
         'param'
-            => '\phpDocumentor\Reflection\DocBlock\Tag\ParamTag',
+            => '\Barryvdh\Reflection\DocBlock\Tag\ParamTag',
         'property-read'
-            => '\phpDocumentor\Reflection\DocBlock\Tag\PropertyReadTag',
+            => '\Barryvdh\Reflection\DocBlock\Tag\PropertyReadTag',
         'property'
-            => '\phpDocumentor\Reflection\DocBlock\Tag\PropertyTag',
+            => '\Barryvdh\Reflection\DocBlock\Tag\PropertyTag',
         'property-write'
-            => '\phpDocumentor\Reflection\DocBlock\Tag\PropertyWriteTag',
+            => '\Barryvdh\Reflection\DocBlock\Tag\PropertyWriteTag',
         'return'
-            => '\phpDocumentor\Reflection\DocBlock\Tag\ReturnTag',
+            => '\Barryvdh\Reflection\DocBlock\Tag\ReturnTag',
         'see'
-            => '\phpDocumentor\Reflection\DocBlock\Tag\SeeTag',
+            => '\Barryvdh\Reflection\DocBlock\Tag\SeeTag',
         'since'
-            => '\phpDocumentor\Reflection\DocBlock\Tag\SinceTag',
+            => '\Barryvdh\Reflection\DocBlock\Tag\SinceTag',
         'source'
-            => '\phpDocumentor\Reflection\DocBlock\Tag\SourceTag',
+            => '\Barryvdh\Reflection\DocBlock\Tag\SourceTag',
         'throw'
-            => '\phpDocumentor\Reflection\DocBlock\Tag\ThrowsTag',
+            => '\Barryvdh\Reflection\DocBlock\Tag\ThrowsTag',
         'throws'
-            => '\phpDocumentor\Reflection\DocBlock\Tag\ThrowsTag',
+            => '\Barryvdh\Reflection\DocBlock\Tag\ThrowsTag',
         'uses'
-            => '\phpDocumentor\Reflection\DocBlock\Tag\UsesTag',
+            => '\Barryvdh\Reflection\DocBlock\Tag\UsesTag',
         'var'
-            => '\phpDocumentor\Reflection\DocBlock\Tag\VarTag',
+            => '\Barryvdh\Reflection\DocBlock\Tag\VarTag',
         'version'
-            => '\phpDocumentor\Reflection\DocBlock\Tag\VersionTag'
+            => '\Barryvdh\Reflection\DocBlock\Tag\VersionTag'
     );
 
     /**

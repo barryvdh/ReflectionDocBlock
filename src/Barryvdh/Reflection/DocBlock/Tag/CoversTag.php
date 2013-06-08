@@ -10,15 +10,15 @@
  * @link      http://phpdoc.org
  */
 
-namespace phpDocumentor\Reflection\DocBlock\Tag;
+namespace Barryvdh\Reflection\DocBlock\Tag;
 
 /**
- * Reflection class for a @property-read tag in a Docblock.
+ * Reflection class for a @covers tag in a Docblock.
  *
  * @author  Mike van Riel <mike.vanriel@naenius.com>
  * @license http://www.opensource.org/licenses/mit-license.php MIT
  * @link    http://phpdoc.org
  */
-class PropertyReadTag extends PropertyTag
+class CoversTag extends SeeTag
 {
 }

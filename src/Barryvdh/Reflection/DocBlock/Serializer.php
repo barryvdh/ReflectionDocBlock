@@ -10,9 +10,9 @@
  * @link      http://phpdoc.org
  */
 
-namespace phpDocumentor\Reflection\DocBlock;
+namespace Barryvdh\Reflection\DocBlock;
 
-use phpDocumentor\Reflection\DocBlock;
+use Barryvdh\Reflection\DocBlock;
 
 /**
  * Serializes a DocBlock instance.

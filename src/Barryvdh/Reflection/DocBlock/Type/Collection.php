@@ -10,9 +10,9 @@
  * @link      http://phpdoc.org
  */
 
-namespace phpDocumentor\Reflection\DocBlock\Type;
+namespace Barryvdh\Reflection\DocBlock\Type;
 
-use phpDocumentor\Reflection\DocBlock\Context;
+use Barryvdh\Reflection\DocBlock\Context;
 
 /**
  * Collection

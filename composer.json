@@ -1,13 +1,12 @@
 {
-    "name":    "phpdocumentor/reflection-docblock",
+    "name":    "barryvdh/reflection-docblock",
     "type":    "library",
     "license": "MIT",
     "authors": [
         {"name": "Mike van Riel", "email": "mike.vanriel@naenius.com"}
     ],
     "require": {
-        "php": ">=5.3.3",
-        "dflydev/markdown": "1.0.*"
+        "php": ">=5.3.3"
     },
     "autoload": {
         "psr-0": {"phpDocumentor": ["src/"]}

@@ -10,11 +10,11 @@
  * @link      http://phpdoc.org
  */
 
-namespace phpDocumentor\Reflection;
+namespace Barryvdh\Reflection;
 
-use phpDocumentor\Reflection\DocBlock\Tag;
-use phpDocumentor\Reflection\DocBlock\Context;
-use phpDocumentor\Reflection\DocBlock\Location;
+use Barryvdh\Reflection\DocBlock\Tag;
+use Barryvdh\Reflection\DocBlock\Context;
+use Barryvdh\Reflection\DocBlock\Location;
 
 /**
  * Parses the DocBlock for any structure.

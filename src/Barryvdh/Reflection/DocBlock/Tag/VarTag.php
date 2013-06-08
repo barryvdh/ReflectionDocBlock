@@ -10,7 +10,7 @@
  * @link      http://phpdoc.org
  */
 
-namespace phpDocumentor\Reflection\DocBlock\Tag;
+namespace Barryvdh\Reflection\DocBlock\Tag;
 
 /**
  * Reflection class for a @var tag in a Docblock.
