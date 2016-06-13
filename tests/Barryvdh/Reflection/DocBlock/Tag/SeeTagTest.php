@@ -10,10 +10,10 @@
  * @link      http://phpdoc.org
  */
 
-namespace phpDocumentor\Reflection\DocBlock\Tag;
+namespace Barryvdh\Reflection\DocBlock\Tag;
 
 /**
- * Test class for \phpDocumentor\Reflection\DocBlock\Tag\SeeTag
+ * Test class for \Barryvdh\Reflection\DocBlock\Tag\SeeTag
  *
  * @author    Daniel O'Connor <daniel.oconnor@gmail.com>
  * @copyright 2010-2011 Mike van Riel / Naenius. (http://www.naenius.com)
@@ -31,7 +31,7 @@ class SeeTagTest extends \PHPUnit_Framework_TestCase
      * @param string $exContent
      * @param string $exReference
      *
-     * @covers \phpDocumentor\Reflection\DocBlock\Tag\SeeTag
+     * @covers \Barryvdh\Reflection\DocBlock\Tag\SeeTag
      * @dataProvider provideDataForConstuctor
      *
      * @return void

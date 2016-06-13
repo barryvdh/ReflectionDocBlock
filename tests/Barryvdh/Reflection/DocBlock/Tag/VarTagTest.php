@@ -10,10 +10,10 @@
  * @link      http://phpdoc.org
  */
 
-namespace phpDocumentor\Reflection\DocBlock\Tag;
+namespace Barryvdh\Reflection\DocBlock\Tag;
 
 /**
- * Test class for \phpDocumentor\Reflection\DocBlock\Tag\VarTag
+ * Test class for \Barryvdh\Reflection\DocBlock\Tag\VarTag
  *
  * @author    Daniel O'Connor <daniel.oconnor@gmail.com>
  * @copyright 2010-2011 Mike van Riel / Naenius. (http://www.naenius.com)
@@ -23,7 +23,7 @@ namespace phpDocumentor\Reflection\DocBlock\Tag;
 class VarTagTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * Test that the \phpDocumentor\Reflection\DocBlock\Tag\VarTag can
+     * Test that the \Barryvdh\Reflection\DocBlock\Tag\VarTag can
      * understand the @var doc block.
      *
      * @param string $type
@@ -32,7 +32,7 @@ class VarTagTest extends \PHPUnit_Framework_TestCase
      * @param string $exVariable
      * @param string $exDescription
      *
-     * @covers \phpDocumentor\Reflection\DocBlock\Tag\VarTag
+     * @covers \Barryvdh\Reflection\DocBlock\Tag\VarTag
      * @dataProvider provideDataForConstuctor
      *
      * @return void

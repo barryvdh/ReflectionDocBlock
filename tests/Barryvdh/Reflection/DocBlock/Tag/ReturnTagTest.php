@@ -10,10 +10,10 @@
  * @link      http://phpdoc.org
  */
 
-namespace phpDocumentor\Reflection\DocBlock\Tag;
+namespace Barryvdh\Reflection\DocBlock\Tag;
 
 /**
- * Test class for \phpDocumentor\Reflection\DocBlock\ReturnTag
+ * Test class for \Barryvdh\Reflection\DocBlock\ReturnTag
  *
  * @author    Mike van Riel <mike.vanriel@naenius.com>
  * @copyright 2010-2011 Mike van Riel / Naenius. (http://www.naenius.com)
@@ -23,7 +23,7 @@ namespace phpDocumentor\Reflection\DocBlock\Tag;
 class ReturnTagTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * Test that the \phpDocumentor\Reflection\DocBlock\Tag\ReturnTag can
+     * Test that the \Barryvdh\Reflection\DocBlock\Tag\ReturnTag can
      * understand the @return DocBlock.
      *
      * @param string $type
@@ -32,7 +32,7 @@ class ReturnTagTest extends \PHPUnit_Framework_TestCase
      * @param string $extractedTypes
      * @param string $extractedDescription
      *
-     * @covers \phpDocumentor\Reflection\DocBlock\Tag\ReturnTag
+     * @covers \Barryvdh\Reflection\DocBlock\Tag\ReturnTag
      * @dataProvider provideDataForConstructor
      *
      * @return void

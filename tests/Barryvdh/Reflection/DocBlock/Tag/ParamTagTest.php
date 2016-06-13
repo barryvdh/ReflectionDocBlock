@@ -10,10 +10,10 @@
  * @link      http://phpdoc.org
  */
 
-namespace phpDocumentor\Reflection\DocBlock\Tag;
+namespace Barryvdh\Reflection\DocBlock\Tag;
 
 /**
- * Test class for \phpDocumentor\Reflection\DocBlock\ParamTag
+ * Test class for \Barryvdh\Reflection\DocBlock\ParamTag
  *
  * @author    Mike van Riel <mike.vanriel@naenius.com>
  * @copyright 2010-2011 Mike van Riel / Naenius. (http://www.naenius.com)
@@ -23,7 +23,7 @@ namespace phpDocumentor\Reflection\DocBlock\Tag;
 class ParamTagTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * Test that the \phpDocumentor\Reflection\DocBlock\Tag\ParamTag can
+     * Test that the \Barryvdh\Reflection\DocBlock\Tag\ParamTag can
      * understand the @param DocBlock.
      *
      * @param string $type
@@ -33,7 +33,7 @@ class ParamTagTest extends \PHPUnit_Framework_TestCase
      * @param string $extractedVarName
      * @param string $extractedDescription
      *
-     * @covers \phpDocumentor\Reflection\DocBlock\Tag\ParamTag
+     * @covers \Barryvdh\Reflection\DocBlock\Tag\ParamTag
      * @dataProvider provideDataForConstructor
      *
      * @return void

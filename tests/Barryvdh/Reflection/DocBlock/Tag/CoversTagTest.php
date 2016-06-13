@@ -10,10 +10,10 @@
  * @link      http://phpdoc.org
  */
 
-namespace phpDocumentor\Reflection\DocBlock\Tag;
+namespace Barryvdh\Reflection\DocBlock\Tag;
 
 /**
- * Test class for \phpDocumentor\Reflection\DocBlock\Tag\CoversTag
+ * Test class for \Barryvdh\Reflection\DocBlock\Tag\CoversTag
  *
  * @author    Daniel O'Connor <daniel.oconnor@gmail.com>
  * @copyright 2010-2011 Mike van Riel / Naenius. (http://www.naenius.com)
@@ -23,7 +23,7 @@ namespace phpDocumentor\Reflection\DocBlock\Tag;
 class CoversTagTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * Test that the \phpDocumentor\Reflection\DocBlock\Tag\CoversTag can create
+     * Test that the \Barryvdh\Reflection\DocBlock\Tag\CoversTag can create
      * a link for the covers doc block.
      *
      * @param string $type
@@ -31,7 +31,7 @@ class CoversTagTest extends \PHPUnit_Framework_TestCase
      * @param string $exContent
      * @param string $exReference
      *
-     * @covers \phpDocumentor\Reflection\DocBlock\Tag\CoversTag
+     * @covers \Barryvdh\Reflection\DocBlock\Tag\CoversTag
      * @dataProvider provideDataForConstuctor
      *
      * @return void

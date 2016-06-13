@@ -10,13 +10,13 @@
  * @link      http://phpdoc.org
  */
 
-namespace phpDocumentor\Reflection\DocBlock;
+namespace Barryvdh\Reflection\DocBlock;
 
-use phpDocumentor\Reflection\DocBlock;
-use phpDocumentor\Reflection\DocBlock\Context;
+use Barryvdh\Reflection\DocBlock;
+use Barryvdh\Reflection\DocBlock\Context;
 
 /**
- * Test class for \phpDocumentor\Reflection\DocBlock\Tag\VarTag
+ * Test class for \Barryvdh\Reflection\DocBlock\Tag\VarTag
  *
  * @author    Daniel O'Connor <daniel.oconnor@gmail.com>
  * @copyright 2010-2011 Mike van Riel / Naenius. (http://www.naenius.com)
@@ -37,7 +37,7 @@ class TagTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers \phpDocumentor\Reflection\DocBlock\Tag::registerTagHandler
+     * @covers \Barryvdh\Reflection\DocBlock\Tag::registerTagHandler
      * 
      * @return void
      */
@@ -70,7 +70,7 @@ class TagTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers \phpDocumentor\Reflection\DocBlock\Tag::registerTagHandler
+     * @covers \Barryvdh\Reflection\DocBlock\Tag::registerTagHandler
      * 
      * @return void
      */
@@ -93,7 +93,7 @@ class TagTest extends \PHPUnit_Framework_TestCase
         include 'data:text/plain;base64,'. base64_encode(
 <<<TAG_HANDLER
 <?php
-    class MyTagHandler extends \phpDocumentor\Reflection\DocBlock\Tag {}
+    class MyTagHandler extends \Barryvdh\Reflection\DocBlock\Tag {}
 TAG_HANDLER
         );
 
@@ -118,8 +118,8 @@ TAG_HANDLER
     
     /**
      * @depends testTagHandlerCorrectRegistration
-     * @covers \phpDocumentor\Reflection\DocBlock\Tag::registerTagHandler
-     * @covers \phpDocumentor\Reflection\DocBlock\Tag::createInstance
+     * @covers \Barryvdh\Reflection\DocBlock\Tag::registerTagHandler
+     * @covers \Barryvdh\Reflection\DocBlock\Tag::createInstance
      * 
      * @return void
      */
@@ -162,8 +162,8 @@ TAG_HANDLER
     
     /**
      * @depends testTagHandlerCorrectRegistration
-     * @covers \phpDocumentor\Reflection\DocBlock\Tag::registerTagHandler
-     * @covers \phpDocumentor\Reflection\DocBlock\Tag::createInstance
+     * @covers \Barryvdh\Reflection\DocBlock\Tag::registerTagHandler
+     * @covers \Barryvdh\Reflection\DocBlock\Tag::createInstance
      * 
      * @return void
      */
@@ -201,7 +201,7 @@ TAG_HANDLER
     }
 
     /**
-     * @covers \phpDocumentor\Reflection\DocBlock\Tag::registerTagHandler
+     * @covers \Barryvdh\Reflection\DocBlock\Tag::registerTagHandler
      * 
      * @return void
      */
@@ -232,7 +232,7 @@ TAG_HANDLER
     }
 
     /**
-     * @covers \phpDocumentor\Reflection\DocBlock\Tag::registerTagHandler
+     * @covers \Barryvdh\Reflection\DocBlock\Tag::registerTagHandler
      * 
      * @return void
      */
@@ -265,14 +265,14 @@ TAG_HANDLER
     }
 
     /**
-     * Test that the \phpDocumentor\Reflection\DocBlock\Tag\VarTag can
+     * Test that the \Barryvdh\Reflection\DocBlock\Tag\VarTag can
      * understand the @var doc block.
      *
      * @param string $type
      * @param string $content
      * @param string $exDescription
      *
-     * @covers \phpDocumentor\Reflection\DocBlock\Tag
+     * @covers \Barryvdh\Reflection\DocBlock\Tag
      * @dataProvider provideDataForConstuctor
      *
      * @return void

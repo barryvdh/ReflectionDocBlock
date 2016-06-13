@@ -10,14 +10,14 @@
  * @link      http://phpdoc.org
  */
 
-namespace phpDocumentor\Reflection;
+namespace Barryvdh\Reflection;
 
-use phpDocumentor\Reflection\DocBlock\Context;
-use phpDocumentor\Reflection\DocBlock\Location;
-use phpDocumentor\Reflection\DocBlock\Tag\ReturnTag;
+use Barryvdh\Reflection\DocBlock\Context;
+use Barryvdh\Reflection\DocBlock\Location;
+use Barryvdh\Reflection\DocBlock\Tag\ReturnTag;
 
 /**
- * Test class for phpDocumentor\Reflection\DocBlock
+ * Test class for Barryvdh\Reflection\DocBlock
  *
  * @author    Mike van Riel <mike.vanriel@naenius.com>
  * @copyright 2010-2011 Mike van Riel / Naenius. (http://www.naenius.com)
@@ -27,7 +27,7 @@ use phpDocumentor\Reflection\DocBlock\Tag\ReturnTag;
 class DocBlockTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @covers \phpDocumentor\Reflection\DocBlock
+     * @covers \Barryvdh\Reflection\DocBlock
      * 
      * @return void
      */
@@ -70,7 +70,7 @@ DOCBLOCK;
     }
 
     /**
-     * @covers \phpDocumentor\Reflection\DocBlock::splitDocBlock
+     * @covers \Barryvdh\Reflection\DocBlock::splitDocBlock
      *
      * @return void
      */
@@ -92,7 +92,7 @@ DOCBLOCK;
     }
 
     /**
-     * @covers \phpDocumentor\Reflection\DocBlock::isTemplateStart
+     * @covers \Barryvdh\Reflection\DocBlock::isTemplateStart
      */
     public function testIfStartOfTemplateIsDiscovered()
     {
@@ -113,7 +113,7 @@ DOCBLOCK;
     }
 
     /**
-     * @covers \phpDocumentor\Reflection\DocBlock::isTemplateEnd
+     * @covers \Barryvdh\Reflection\DocBlock::isTemplateEnd
      */
     public function testIfEndOfTemplateIsDiscovered()
     {
@@ -127,7 +127,7 @@ DOCBLOCK;
     }
 
     /**
-     * @covers \phpDocumentor\Reflection\DocBlock::cleanInput
+     * @covers \Barryvdh\Reflection\DocBlock::cleanInput
      * 
      * @return void
      */
@@ -144,7 +144,7 @@ DOCBLOCK;
     }
 
     /**
-     * @covers \phpDocumentor\Reflection\DocBlock::__construct
+     * @covers \Barryvdh\Reflection\DocBlock::__construct
      * 
      * @return void
      */
@@ -152,7 +152,7 @@ DOCBLOCK;
     {
         $object = new DocBlock(new \ReflectionClass($this));
         $this->assertEquals(
-            'Test class for phpDocumentor\Reflection\DocBlock',
+            'Test class for Barryvdh\Reflection\DocBlock',
             $object->getShortDescription()
         );
         $this->assertEquals('', $object->getLongDescription()->getContents());
@@ -196,7 +196,7 @@ DOCBLOCK;
     }
 
     /**
-     * @covers \phpDocumentor\Reflection\DocBlock::parseTags
+     * @covers \Barryvdh\Reflection\DocBlock::parseTags
      * @expectedException \LogicException
      * 
      * @return void
@@ -210,7 +210,7 @@ DOCBLOCK;
         include 'data:text/plain;base64,'. base64_encode(
             <<<DOCBLOCK_EXTENSION
 <?php
-class MyReflectionDocBlock extends \phpDocumentor\Reflection\DocBlock {
+class MyReflectionDocBlock extends \Barryvdh\Reflection\DocBlock {
     protected function splitDocBlock(\$comment) {
         return array('', '', 'Invalid tag block');
     }
@@ -262,7 +262,7 @@ DOCBLOCK;
 
     /**
      * @depends testConstructFromReflector
-     * @covers \phpDocumentor\Reflection\DocBlock::getTagsByName
+     * @covers \Barryvdh\Reflection\DocBlock::getTagsByName
      * 
      * @return void
      */
@@ -275,7 +275,7 @@ DOCBLOCK;
 
     /**
      * @depends testConstructWithTagsOnly
-     * @covers \phpDocumentor\Reflection\DocBlock::parseTags
+     * @covers \Barryvdh\Reflection\DocBlock::parseTags
      * 
      * @return void
      */
@@ -293,7 +293,7 @@ DOCBLOCK;
 
     /**
      * @depends testConstructWithTagsOnly
-     * @covers \phpDocumentor\Reflection\DocBlock::parseTags
+     * @covers \Barryvdh\Reflection\DocBlock::parseTags
      * 
      * @return void
      */
@@ -316,7 +316,7 @@ DOCBLOCK;
 
     /**
      * @depends testConstructWithTagsOnly
-     * @covers \phpDocumentor\Reflection\DocBlock::getTagsByName
+     * @covers \Barryvdh\Reflection\DocBlock::getTagsByName
      * 
      * @return void
      */

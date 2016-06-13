@@ -10,10 +10,10 @@
  * @link      http://phpdoc.org
  */
 
-namespace phpDocumentor\Reflection\DocBlock\Tag;
+namespace Barryvdh\Reflection\DocBlock\Tag;
 
 /**
- * Test class for \phpDocumentor\Reflection\DocBlock\Tag\ExampleTag
+ * Test class for \Barryvdh\Reflection\DocBlock\Tag\ExampleTag
  *
  * @author    Vasil Rangelov <boen.robot@gmail.com>
  * @copyright 2010-2011 Mike van Riel / Naenius. (http://www.naenius.com)
@@ -23,7 +23,7 @@ namespace phpDocumentor\Reflection\DocBlock\Tag;
 class ExampleTagTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * Test that the \phpDocumentor\Reflection\DocBlock\Tag\SourceTag can
+     * Test that the \Barryvdh\Reflection\DocBlock\Tag\SourceTag can
      * understand the @source DocBlock.
      *
      * @param string $type
@@ -33,7 +33,7 @@ class ExampleTagTest extends \PHPUnit_Framework_TestCase
      * @param string $exLineCount
      * @param string $exFilepath
      *
-     * @covers \phpDocumentor\Reflection\DocBlock\Tag\ExampleTag
+     * @covers \Barryvdh\Reflection\DocBlock\Tag\ExampleTag
      * @dataProvider provideDataForConstuctor
      *
      * @return void

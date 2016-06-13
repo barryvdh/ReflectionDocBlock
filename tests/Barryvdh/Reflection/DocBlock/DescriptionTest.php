@@ -10,10 +10,10 @@
  * @link      http://phpdoc.org
  */
 
-namespace phpDocumentor\Reflection\DocBlock;
+namespace Barryvdh\Reflection\DocBlock;
 
 /**
- * Test class for \phpDocumentor\Reflection\DocBlock\Description
+ * Test class for \Barryvdh\Reflection\DocBlock\Description
  *
  * @author    Vasil Rangelov <boen.robot@gmail.com>
  * @copyright 2010-2011 Mike van Riel / Naenius. (http://www.naenius.com)

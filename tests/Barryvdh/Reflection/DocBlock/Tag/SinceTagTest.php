@@ -10,10 +10,10 @@
  * @link      http://phpdoc.org
  */
 
-namespace phpDocumentor\Reflection\DocBlock\Tag;
+namespace Barryvdh\Reflection\DocBlock\Tag;
 
 /**
- * Test class for \phpDocumentor\Reflection\DocBlock\Tag\SinceTag
+ * Test class for \Barryvdh\Reflection\DocBlock\Tag\SinceTag
  *
  * @author    Vasil Rangelov <boen.robot@gmail.com>
  * @copyright 2010-2011 Mike van Riel / Naenius. (http://www.naenius.com)
@@ -23,7 +23,7 @@ namespace phpDocumentor\Reflection\DocBlock\Tag;
 class SinceTagTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * Test that the \phpDocumentor\Reflection\DocBlock\Tag\LinkTag can create
+     * Test that the \Barryvdh\Reflection\DocBlock\Tag\LinkTag can create
      * a link for the @since doc block.
      *
      * @param string $type
@@ -32,7 +32,7 @@ class SinceTagTest extends \PHPUnit_Framework_TestCase
      * @param string $exDescription
      * @param string $exVersion
      *
-     * @covers \phpDocumentor\Reflection\DocBlock\Tag\SinceTag
+     * @covers \Barryvdh\Reflection\DocBlock\Tag\SinceTag
      * @dataProvider provideDataForConstuctor
      *
      * @return void
