@@ -14,6 +14,7 @@ namespace phpDocumentor\Reflection;
 
 use phpDocumentor\Reflection\DocBlock\Context;
 use phpDocumentor\Reflection\DocBlock\Location;
+use phpDocumentor\Reflection\DocBlock\Tag\ReturnTag;
 
 /**
  * Test class for phpDocumentor\Reflection\DocBlock
@@ -70,7 +71,7 @@ DOCBLOCK;
 
     /**
      * @covers \phpDocumentor\Reflection\DocBlock::splitDocBlock
-     * 
+     *
      * @return void
      */
     public function testConstructWithTagsOnly()
@@ -88,6 +89,41 @@ DOCBLOCK;
         $this->assertTrue($object->hasTag('see'));
         $this->assertTrue($object->hasTag('return'));
         $this->assertFalse($object->hasTag('category'));
+    }
+
+    /**
+     * @covers \phpDocumentor\Reflection\DocBlock::isTemplateStart
+     */
+    public function testIfStartOfTemplateIsDiscovered()
+    {
+        $fixture = <<<DOCBLOCK
+/**#@+
+ * @see \MyClass
+ * @return void
+ */
+DOCBLOCK;
+        $object = new DocBlock($fixture);
+        $this->assertEquals('', $object->getShortDescription());
+        $this->assertEquals('', $object->getLongDescription()->getContents());
+        $this->assertCount(2, $object->getTags());
+        $this->assertTrue($object->hasTag('see'));
+        $this->assertTrue($object->hasTag('return'));
+        $this->assertFalse($object->hasTag('category'));
+        $this->assertTrue($object->isTemplateStart());
+    }
+
+    /**
+     * @covers \phpDocumentor\Reflection\DocBlock::isTemplateEnd
+     */
+    public function testIfEndOfTemplateIsDiscovered()
+    {
+        $fixture = <<<DOCBLOCK
+/**#@-*/
+DOCBLOCK;
+        $object = new DocBlock($fixture);
+        $this->assertEquals('', $object->getShortDescription());
+        $this->assertEquals('', $object->getLongDescription()->getContents());
+        $this->assertTrue($object->isTemplateEnd());
     }
 
     /**
@@ -272,7 +308,10 @@ DOCBLOCK;
  */
 DOCBLOCK;
         $object = new DocBlock($fixture);
-        $this->assertCount(1, $object->getTags());
+        $this->assertCount(1, $tags = $object->getTags());
+	    /** @var ReturnTag $tag */
+	    $tag = reset($tags);
+	    $this->assertEquals("Content on\n    multiple lines.\n\n    One more, after the break.", $tag->getDescription());
     }
 
     /**

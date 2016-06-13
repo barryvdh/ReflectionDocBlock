@@ -8,13 +8,19 @@
     "require": {
         "php": ">=5.3.3"
     },
-    "suggest": {
-        "dflydev/markdown": "1.0.*"
-    },
     "autoload": {
         "psr-0": {"Barryvdh": ["src/"]}
     },
     "require-dev": {
-        "phpunit/phpunit": "3.7.*@stable"
+        "phpunit/phpunit": "~4.0,<4.5"
+    },
+    "suggest": {
+        "dflydev/markdown": "~1.0",
+        "erusev/parsedown": "~1.0"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.0.x-dev"
+        }
     }
 }
