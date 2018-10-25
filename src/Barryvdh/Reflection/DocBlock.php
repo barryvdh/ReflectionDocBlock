@@ -439,6 +439,23 @@ class DocBlock implements \Reflector
         return $tag;
     }
 
+    /**
+     * Deletes a tag from the list of tags.
+     *
+     * @param Tag $tag The tag to be deleted.
+     *
+     * @return bool True if the tag was deleted.
+     */
+    public function deleteTag(Tag $tag)
+    {
+        if (($key = array_search($tag, $this->tags)) !== false) {
+            unset($this->tags[$key]);
+
+            return true;
+        }
+
+        return false;
+    }
 
     /**
      * Builds a string representation of this object.
