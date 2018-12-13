@@ -76,7 +76,15 @@ class MethodTag extends ReturnTag
                 )?
                 # Return type
                 (?:
-                    ([\w\|_\\\\]+)
+                    (
+                        (?:[\w\|_\\\\]*\$this[\w\|_\\\\]*)
+                        |
+                        (?:
+                            (?:[\w\|_\\\\]+)
+                            # array notation
+                            (?:\[\])*
+                        )*
+                    )
                     \s+
                 )?
                 # Legacy method name (not captured)
