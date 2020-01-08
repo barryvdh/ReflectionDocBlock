@@ -151,6 +151,10 @@ class Collection extends \ArrayObject
             return '';
         }
 
+        if (substr($type, 0, 6) === 'array<' && substr($type, -1) === '>') {
+            return $type;
+        }
+
         if ($this->isTypeAnArray($type)) {
             return $this->expand(substr($type, 0, -2)) . self::OPERATOR_ARRAY;
         }
