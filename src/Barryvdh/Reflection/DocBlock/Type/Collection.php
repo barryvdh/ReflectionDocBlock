@@ -176,7 +176,11 @@ class Collection extends \ArrayObject
                 if ('' !== $namespace) {
                     $namespace .= self::OPERATOR_NAMESPACE;
                 }
-                return self::OPERATOR_NAMESPACE . $namespace . $type;
+                $with_name_space = self::OPERATOR_NAMESPACE . $namespace . $type;
+                if($this->shouldBeAbsolute($with_name_space)){
+                    return $with_name_space;
+                }
+                return $type;
             }
 
             if (strpos($type_parts[0], '::')) {
