@@ -353,6 +353,39 @@ class Tag implements \Reflector
     }
 
     /**
+     * If the given tags should be together or apart.
+     *
+     * @param Tag $tag
+     *
+     * @return bool
+     */
+    public function inSameGroup(Tag $tag)
+    {
+        $firstName = $this->getName();
+        $secondName = $tag->getName();
+
+        if ($firstName === $secondName) {
+            return true;
+        }
+
+        $groups = array(
+            array('deprecated', 'link', 'see', 'since'),
+            array('author', 'copyright', 'license'),
+            array('category', 'package', 'subpackage'),
+            array('property', 'property-read', 'property-write'),
+            array('param', 'return'),
+        );
+
+        foreach ($groups as $group) {
+            if (in_array($firstName, $group, true) && in_array($secondName, $group, true)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
      * Builds a string representation of this object.
      *
      * @todo determine the exact format as used by PHP Reflection and implement it.
