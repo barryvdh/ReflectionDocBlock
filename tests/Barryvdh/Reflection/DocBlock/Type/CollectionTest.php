@@ -1,7 +1,7 @@
 <?php
 /**
  * phpDocumentor Collection Test
- * 
+ *
  * PHP version 5.3
  *
  * @author    Mike van Riel <mike.vanriel@naenius.com>
@@ -16,7 +16,7 @@ use Barryvdh\Reflection\DocBlock\Context;
 
 /**
  * Test class for \Barryvdh\Reflection\DocBlock\Type\Collection
- * 
+ *
  * @covers Barryvdh\Reflection\DocBlock\Type\Collection
  *
  * @author    Mike van Riel <mike.vanriel@naenius.com>
@@ -29,7 +29,7 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers Barryvdh\Reflection\DocBlock\Type\Collection::__construct
      * @covers Barryvdh\Reflection\DocBlock\Type\Collection::getContext
-     * 
+     *
      * @return void
      */
     public function testConstruct()
@@ -42,7 +42,7 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers Barryvdh\Reflection\DocBlock\Type\Collection::__construct
-     * 
+     *
      * @return void
      */
     public function testConstructWithTypes()
@@ -53,7 +53,7 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers Barryvdh\Reflection\DocBlock\Type\Collection::__construct
-     * 
+     *
      * @return void
      */
     public function testConstructWithNamespace()
@@ -70,7 +70,7 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers Barryvdh\Reflection\DocBlock\Type\Collection::__construct
-     * 
+     *
      * @return void
      */
     public function testConstructWithNamespaceAliases()
@@ -89,7 +89,7 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
      *
      * @dataProvider provideTypesToExpand
      * @covers Barryvdh\Reflection\DocBlock\Type\Collection::add
-     * 
+     *
      * @return void
      */
     public function testAdd($fixture, $expected)
@@ -109,7 +109,7 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
      *
      * @dataProvider provideTypesToExpandWithoutNamespace
      * @covers Barryvdh\Reflection\DocBlock\Type\Collection::add
-     * 
+     *
      * @return void
      */
     public function testAddWithoutNamespace($fixture, $expected)
@@ -146,7 +146,7 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers Barryvdh\Reflection\DocBlock\Type\Collection::add
      * @expectedException InvalidArgumentException
-     * 
+     *
      * @return void
      */
     public function testAddWithInvalidArgument()
@@ -196,6 +196,22 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
             array(
                 'DocBlock[]|int[]',
                 array($namespace.'DocBlock[]', 'int[]')
+            ),
+            array(
+                'array<int, string>',
+                array('array<int, string>')
+            ),
+            array(
+                'array<int, string>|string',
+                array('array<int, string>', 'string')
+            ),
+            array(
+                'array<int, float|bool>|string',
+                array('array<int, float|bool>', 'string')
+            ),
+            array(
+                'array<int, string|array<int, bool>>|array<int, float>|string',
+                array('array<int, string|array<int, bool>>', 'array<int, float>', 'string')
             ),
             array(
                 'LinkDescriptor::setLink()',

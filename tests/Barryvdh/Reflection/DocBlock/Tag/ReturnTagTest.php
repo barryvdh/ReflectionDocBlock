@@ -1,7 +1,7 @@
 <?php
 /**
  * phpDocumentor Return tag test.
- * 
+ *
  * PHP version 5.3
  *
  * @author    Mike van Riel <mike.vanriel@naenius.com>
@@ -96,6 +96,27 @@ class ReturnTagTest extends \PHPUnit_Framework_TestCase
                 'int',
                 array('int'),
                 "Number of Bobs"
+            ),
+            array(
+                'return',
+                'array<int, string> Types of Bobs',
+                'array<int, string>',
+                array('array<int, string>'),
+                'Types of Bobs'
+            ),
+            array(
+                'return',
+                'array<int, string>|string Types of Bobs',
+                'array<int, string>|string',
+                array('array<int, string>', 'string'),
+                'Types of Bobs'
+            ),
+            array(
+                'return',
+                'array<int, string|bool>|string Types of Bobs',
+                'array<int, string|bool>|string',
+                array('array<int, string|bool>', 'string'),
+                'Types of Bobs'
             )
         );
     }
