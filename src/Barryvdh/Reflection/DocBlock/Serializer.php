@@ -36,6 +36,9 @@ class Serializer
     /** @var int|null The max length of a line. */
     protected $lineLength = null;
 
+    /** @var bool Separate tag groups. */
+    protected $separateTags = false;
+
     /**
      * Create a Serializer instance.
      *
@@ -45,17 +48,20 @@ class Serializer
      * @param bool     $indentFirstLine Whether to indent the first line.
      * @param int|null $lineLength      The max length of a line or NULL to
      *     disable line wrapping.
+     * @param bool     $separateTags    Separate tag groups.
      */
     public function __construct(
         $indent = 0,
         $indentString = ' ',
         $indentFirstLine = true,
-        $lineLength = null
+        $lineLength = null,
+        $separateTags = false
     ) {
         $this->setIndentationString($indentString);
         $this->setIndent($indent);
         $this->setIsFirstLineIndented($indentFirstLine);
         $this->setLineLength($lineLength);
+        $this->setSeparateTags($separateTags);
     }
 
     /**
@@ -159,6 +165,29 @@ class Serializer
     }
 
     /**
+     * Sets whether there should be an empty line between tag groups.
+     *
+     * @param bool $separateTags The new value for this setting.
+     *
+     * @return $this This serializer object.
+     */
+    public function setSeparateTags($separateTags)
+    {
+        $this->separateTags = (bool)$separateTags;
+        return $this;
+    }
+
+    /**
+     * Gets whether there should be an empty line between tag groups.
+     *
+     * @return bool Whether there should be an empty line between tag groups.
+     */
+    public function getSeparateTags()
+    {
+        return $this->separateTags;
+    }
+
+    /**
      * Generate a DocBlock comment.
      *
      * @param DocBlock The DocBlock to serialize.
@@ -180,8 +209,12 @@ class Serializer
 
         $comment = "{$firstIndent}/**\n{$indent} * {$text}\n{$indent} *\n";
 
+        $tags = array_values($docblock->getTags());
+
         /** @var Tag $tag */
-        foreach ($docblock->getTags() as $tag) {
+        foreach ($tags as $key => $tag) {
+            $nextTag = isset($tags[$key + 1]) ? $tags[$key + 1] : null;
+
             $tagText = (string) $tag;
             if ($this->lineLength) {
                 $tagText = wordwrap($tagText, $wrapLength);
@@ -189,6 +222,10 @@ class Serializer
             $tagText = str_replace("\n", "\n{$indent} * ", $tagText);
 
             $comment .= "{$indent} * {$tagText}\n";
+
+            if ($this->separateTags && $nextTag !== null && ! $tag->inSameGroup($nextTag)) {
+                $comment .= "{$indent} *\n";
+            }
         }
 
         $comment .= $indent . ' */';
