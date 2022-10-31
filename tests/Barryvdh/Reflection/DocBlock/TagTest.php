@@ -14,6 +14,7 @@ namespace Barryvdh\Reflection\DocBlock;
 
 use Barryvdh\Reflection\DocBlock;
 use Barryvdh\Reflection\DocBlock\Context;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test class for \Barryvdh\Reflection\DocBlock\Tag\VarTag
@@ -23,7 +24,7 @@ use Barryvdh\Reflection\DocBlock\Context;
  * @license   http://www.opensource.org/licenses/mit-license.php MIT
  * @link      http://phpdoc.org
  */
-class TagTest extends \PHPUnit_Framework_TestCase
+class TagTest extends TestCase
 {
     
     /**

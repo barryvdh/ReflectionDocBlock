@@ -12,6 +12,9 @@
 
 namespace Barryvdh\Reflection\DocBlock\Tag;
 
+use PHPUnit\Framework\Test;
+use PHPUnit\Framework\TestCase;
+
 /**
  * Test class for \Barryvdh\Reflection\DocBlock\Tag\UsesTag
  *
@@ -20,7 +23,7 @@ namespace Barryvdh\Reflection\DocBlock\Tag;
  * @license   http://www.opensource.org/licenses/mit-license.php MIT
  * @link      http://phpdoc.org
  */
-class UsesTagTest extends \PHPUnit_Framework_TestCase
+class UsesTagTest extends TestCase
 {
     /**
      * Test that the \Barryvdh\Reflection\DocBlock\Tag\UsesTag can create

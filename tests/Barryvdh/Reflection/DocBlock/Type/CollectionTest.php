@@ -13,6 +13,7 @@
 namespace Barryvdh\Reflection\DocBlock\Type;
 
 use Barryvdh\Reflection\DocBlock\Context;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test class for \Barryvdh\Reflection\DocBlock\Type\Collection
@@ -24,7 +25,7 @@ use Barryvdh\Reflection\DocBlock\Context;
  * @license   http://www.opensource.org/licenses/mit-license.php MIT
  * @link      http://phpdoc.org
  */
-class CollectionTest extends \PHPUnit_Framework_TestCase
+class CollectionTest extends TestCase
 {
     /**
      * @covers Barryvdh\Reflection\DocBlock\Type\Collection::__construct

@@ -12,6 +12,8 @@
 
 namespace Barryvdh\Reflection\DocBlock\Tag;
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * Test class for \Barryvdh\Reflection\DocBlock\Tag\SinceTag
  *
@@ -20,7 +22,7 @@ namespace Barryvdh\Reflection\DocBlock\Tag;
  * @license   http://www.opensource.org/licenses/mit-license.php MIT
  * @link      http://phpdoc.org
  */
-class SinceTagTest extends \PHPUnit_Framework_TestCase
+class SinceTagTest extends TestCase
 {
     /**
      * Test that the \Barryvdh\Reflection\DocBlock\Tag\LinkTag can create

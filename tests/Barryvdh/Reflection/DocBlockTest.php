@@ -15,6 +15,7 @@ namespace Barryvdh\Reflection;
 use Barryvdh\Reflection\DocBlock\Context;
 use Barryvdh\Reflection\DocBlock\Location;
 use Barryvdh\Reflection\DocBlock\Tag\ReturnTag;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test class for Barryvdh\Reflection\DocBlock
@@ -24,7 +25,7 @@ use Barryvdh\Reflection\DocBlock\Tag\ReturnTag;
  * @license   http://www.opensource.org/licenses/mit-license.php MIT
  * @link      http://phpdoc.org
  */
-class DocBlockTest extends \PHPUnit_Framework_TestCase
+class DocBlockTest extends TestCase
 {
     /**
      * @covers \Barryvdh\Reflection\DocBlock
