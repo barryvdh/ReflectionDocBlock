@@ -28,12 +28,12 @@ class TagTest extends TestCase
 {
     
     /**
-     * @expectedException \InvalidArgumentException
-     * 
+     *
      * @return void
      */
     public function testInvalidTagLine()
     {
+        $this->expectException(\InvalidArgumentException::class);
         Tag::createInstance('Invalid tag line');
     }
 
@@ -77,7 +77,7 @@ class TagTest extends TestCase
      */
     public function testTagHandlerCorrectRegistration()
     {
-        if (0 == ini_get('allow_url_include')) {
+        if (!ini_get('allow_url_include')) {
             $this->markTestSkipped('"data" URIs for includes are required.');
         }
         $currentHandler = __NAMESPACE__ . '\Tag\VarTag';

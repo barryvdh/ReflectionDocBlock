@@ -108,7 +108,7 @@ LONGDESC;
 
         $parsedDescription = $parsedContents[1]->getParsedDescription();
         $this->assertCount(3, $parsedDescription);
-        $this->assertSame("inline tag with\n", $parsedDescription[0]);
+        $this->assertSame("inline tag with", trim($parsedDescription[0]));
         $this->assertInstanceOf(
             __NAMESPACE__ . '\Tag\LinkTag',
             $parsedDescription[1]

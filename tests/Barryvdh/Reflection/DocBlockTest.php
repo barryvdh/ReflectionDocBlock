@@ -166,12 +166,12 @@ DOCBLOCK;
     }
 
     /**
-     * @expectedException \InvalidArgumentException
-     * 
+     *
      * @return void
      */
     public function testExceptionOnInvalidObject()
     {
+        $this->expectException(\InvalidArgumentException::class);
         new DocBlock($this);
     }
 
@@ -204,8 +204,9 @@ DOCBLOCK;
      */
     public function testInvalidTagBlock()
     {
-        if (0 == ini_get('allow_url_include')) {
+        if (!ini_get('allow_url_include')) {
             $this->markTestSkipped('"data" URIs for includes are required.');
+            return;
         }
 
         include 'data:text/plain;base64,'. base64_encode(

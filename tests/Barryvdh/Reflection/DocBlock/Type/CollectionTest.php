@@ -146,12 +146,12 @@ class CollectionTest extends TestCase
 
     /**
      * @covers Barryvdh\Reflection\DocBlock\Type\Collection::add
-     * @expectedException InvalidArgumentException
      *
      * @return void
      */
     public function testAddWithInvalidArgument()
     {
+        $this->expectException(\InvalidArgumentException::class);
         $collection = new Collection();
         $collection->add(array());
     }
