@@ -12,6 +12,8 @@
 
 namespace Barryvdh\Reflection\DocBlock;
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * Test class for \Barryvdh\Reflection\DocBlock\Description
  *
@@ -20,7 +22,7 @@ namespace Barryvdh\Reflection\DocBlock;
  * @license   http://www.opensource.org/licenses/mit-license.php MIT
  * @link      http://phpdoc.org
  */
-class DescriptionTest extends \PHPUnit_Framework_TestCase
+class DescriptionTest extends TestCase
 {
     public function testConstruct()
     {
@@ -106,7 +108,7 @@ LONGDESC;
 
         $parsedDescription = $parsedContents[1]->getParsedDescription();
         $this->assertCount(3, $parsedDescription);
-        $this->assertSame("inline tag with\n", $parsedDescription[0]);
+        $this->assertSame("inline tag with", trim($parsedDescription[0]));
         $this->assertInstanceOf(
             __NAMESPACE__ . '\Tag\LinkTag',
             $parsedDescription[1]

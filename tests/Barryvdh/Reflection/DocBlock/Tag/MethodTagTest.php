@@ -12,6 +12,8 @@
 
 namespace Barryvdh\Reflection\DocBlock\Tag;
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * Test class for \Barryvdh\Reflection\DocBlock\Tag\MethodTag
  *
@@ -20,7 +22,7 @@ namespace Barryvdh\Reflection\DocBlock\Tag;
  * @license   http://www.opensource.org/licenses/mit-license.php MIT
  * @link      http://phpdoc.org
  */
-class MethodTagTest extends \PHPUnit_Framework_TestCase
+class MethodTagTest extends TestCase
 {
     /**
      * @param string $signature       The signature to test.

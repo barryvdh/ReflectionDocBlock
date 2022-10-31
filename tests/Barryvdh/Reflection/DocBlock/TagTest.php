@@ -14,6 +14,7 @@ namespace Barryvdh\Reflection\DocBlock;
 
 use Barryvdh\Reflection\DocBlock;
 use Barryvdh\Reflection\DocBlock\Context;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test class for \Barryvdh\Reflection\DocBlock\Tag\VarTag
@@ -23,16 +24,16 @@ use Barryvdh\Reflection\DocBlock\Context;
  * @license   http://www.opensource.org/licenses/mit-license.php MIT
  * @link      http://phpdoc.org
  */
-class TagTest extends \PHPUnit_Framework_TestCase
+class TagTest extends TestCase
 {
     
     /**
-     * @expectedException \InvalidArgumentException
-     * 
+     *
      * @return void
      */
     public function testInvalidTagLine()
     {
+        $this->expectException(\InvalidArgumentException::class);
         Tag::createInstance('Invalid tag line');
     }
 
@@ -76,7 +77,7 @@ class TagTest extends \PHPUnit_Framework_TestCase
      */
     public function testTagHandlerCorrectRegistration()
     {
-        if (0 == ini_get('allow_url_include')) {
+        if (!ini_get('allow_url_include')) {
             $this->markTestSkipped('"data" URIs for includes are required.');
         }
         $currentHandler = __NAMESPACE__ . '\Tag\VarTag';
