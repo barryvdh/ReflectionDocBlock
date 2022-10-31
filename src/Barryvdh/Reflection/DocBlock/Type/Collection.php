@@ -106,7 +106,7 @@ class Collection extends \ArrayObject
         }
 
         // separate the type by the OR operator
-        $type_parts = explode(self::OPERATOR_OR, $type);
+        $type_parts = $this->explode($type);
         foreach ($type_parts as $part) {
             $expanded_type = $this->expand($part);
             if ($expanded_type) {
@@ -114,16 +114,50 @@ class Collection extends \ArrayObject
             }
         }
     }
-    
+
     /**
      * Returns a string representation of the collection.
-     * 
+     *
      * @return string The resolved types across the collection, separated with
      *     {@link self::OPERATOR_OR}.
      */
     public function __toString()
     {
         return implode(self::OPERATOR_OR, $this->getArrayCopy());
+    }
+
+    /**
+     * Analyzes the given union of types and returns separated by OR operator
+     * single types.
+     *
+     * @param string $type The type or union of types
+     *
+     * @return array
+     */
+    protected function explode($type)
+    {
+        $type_parts = [];
+        $curr_type = '';
+        $nest_level = 0;
+
+        foreach (str_split($type) as $char) {
+            if ($char === self::OPERATOR_OR && $nest_level === 0) {
+                $type_parts[] = $curr_type;
+                $curr_type = '';
+            } else {
+                if ($char === '<') {
+                    $nest_level++;
+                } else if ($char === '>') {
+                    $nest_level--;
+                }
+
+                $curr_type .= $char;
+            }
+        }
+
+        $type_parts[] = $curr_type;
+
+        return $type_parts;
     }
 
     /**
