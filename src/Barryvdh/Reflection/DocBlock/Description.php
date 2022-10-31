@@ -109,7 +109,7 @@ class Description implements \Reflector
                     )
                 \}/Sux',
                 $this->contents,
-                null,
+                -1,
                 PREG_SPLIT_DELIM_CAPTURE
             );
 
