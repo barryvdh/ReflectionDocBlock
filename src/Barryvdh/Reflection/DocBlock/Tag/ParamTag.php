@@ -49,7 +49,7 @@ class ParamTag extends ReturnTag
         $parts = preg_split(
             '/(\s+)/Su',
             $this->description,
-            3,
+            4,
             PREG_SPLIT_DELIM_CAPTURE
         );
 

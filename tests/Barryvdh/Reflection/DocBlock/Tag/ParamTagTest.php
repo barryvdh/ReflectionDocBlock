@@ -114,6 +114,46 @@ class ParamTagTest extends TestCase
                 array('int'),
                 '$bob',
                 "Type on a new line"
+            ),
+            array(
+                'param',
+                "array \$arrayNoGenericsDescription Some text",
+                'array',
+                array('array'),
+                '$arrayNoGenericsDescription',
+                "Some text"
+            ),
+            array(
+                'param',
+                "array<int, string> \$arrayGenericsNoDescription",
+                'array<int, string>',
+                array('array<int, string>'),
+                '$arrayGenericsNoDescription',
+                ""
+            ),
+            array(
+                'param',
+                "array<int,string> \$arrayGenericsNoSpaceDescription Description goes here",
+                'array<int,string>',
+                array('array<int,string>'),
+                '$arrayGenericsNoSpaceDescription',
+                "Description goes here"
+            ),
+            array(
+                'param',
+                "array<int, string> \$arrayGenericsDescription Description goes here",
+                'array<int, string>',
+                array('array<int, string>'),
+                '$arrayGenericsDescription',
+                "Description goes here"
+            ),
+            array(
+                'param',
+                "array<int, string> \$arrayGenericsDescription Description multiline\n goes\n here",
+                'array<int, string>',
+                array('array<int, string>'),
+                '$arrayGenericsDescription',
+                "Description multiline\n goes\n here"
             )
         );
     }
