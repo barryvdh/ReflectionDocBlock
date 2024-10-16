@@ -114,7 +114,75 @@ class ParamTagTest extends TestCase
                 array('int'),
                 '$bob',
                 "Type on a new line"
-            )
+            ),
+
+            // generic array
+            array(
+                'param',
+                'array<int, string> $names',
+                'array<int, string>',
+                array('array<int, string>'),
+                '$names',
+                ''
+            ),
+
+            // nested generics
+            array(
+                'param',
+                'array<int, array<string, mixed>> $arrays',
+                'array<int, array<string, mixed>>',
+                array('array<int, array<string, mixed>>'),
+                '$arrays',
+                ''
+            ),
+
+            // closure
+            array(
+                'param',
+                '(\Closure(int, string): bool) $callback',
+                '(\Closure(int, string): bool)',
+                array('(\Closure(int, string): bool)'),
+                '$callback',
+                ''
+            ),
+
+            // generic array in closure
+            array(
+                'param',
+                '(\Closure(array<int, string>): bool) $callback',
+                '(\Closure(array<int, string>): bool)',
+                array('(\Closure(array<int, string>): bool)'),
+                '$callback',
+                ''
+            ),
+
+            // union types in closure
+            array(
+                'param',
+                '(\Closure(int|string): bool)|bool $callback',
+                '(\Closure(int|string): bool)|bool',
+                array('(\Closure(int|string): bool)', 'bool'),
+                '$callback',
+                ''
+            ),
+
+            // example from Laravel Framework - Eloquent Builder)
+            array(
+                'param',
+                'array<array-key, array|(\Closure(\Illuminate\Database\Eloquent\Relations\Relation<*,*,*>): mixed)|string>|string  $relations',
+                'array<array-key, array|(\Closure(\Illuminate\Database\Eloquent\Relations\Relation<*,*,*>): mixed)|string>|string',
+                array('array<array-key, array|(\Closure(\Illuminate\Database\Eloquent\Relations\Relation<*,*,*>): mixed)|string>', 'string'),
+                '$relations',
+                ''
+            ),
+            array(
+                'param',
+                '(\Closure(\Illuminate\Database\Eloquent\Relations\Relation<*,*,*>): mixed)|string|null  $callback',
+                '(\Closure(\Illuminate\Database\Eloquent\Relations\Relation<*,*,*>): mixed)|string|null',
+                array('(\Closure(\Illuminate\Database\Eloquent\Relations\Relation<*,*,*>): mixed)', 'string', 'null'),
+                '$callback',
+                ''
+            ),
         );
     }
 }

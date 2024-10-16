@@ -145,9 +145,9 @@ class Collection extends \ArrayObject
                 $type_parts[] = $curr_type;
                 $curr_type = '';
             } else {
-                if ($char === '<') {
+                if ($char === '<' || $char === '(') {
                     $nest_level++;
-                } else if ($char === '>') {
+                } else if ($char === '>' || $char === ')') {
                     $nest_level--;
                 }
 
@@ -186,6 +186,10 @@ class Collection extends \ArrayObject
         }
 
         if (substr($type, 0, 6) === 'array<' && substr($type, -1) === '>') {
+            return $type;
+        }
+
+        if($type[0] === '(') {
             return $type;
         }
 
