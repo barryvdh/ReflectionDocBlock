@@ -142,6 +142,10 @@ class MethodTagTest extends TestCase
             array(
                 'static static foo()',
                 true, 'foo', 'static', true, 0, ''
+            ),
+            array(
+                'static \App\Custom\Collection<int, static> foo()',
+                true, 'foo', '\App\Custom\Collection<int, static>', true, 0, ''
             )
         );
     }

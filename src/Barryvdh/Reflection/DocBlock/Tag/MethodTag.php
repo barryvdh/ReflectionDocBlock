@@ -84,6 +84,7 @@ class MethodTag extends ReturnTag
                             # array notation
                             (?:\[\])*
                         )*
+                        (?:<[^>]+>)?
                     )
                     \s+
                 )?
