@@ -142,7 +142,25 @@ class MethodTagTest extends TestCase
             array(
                 'static static foo()',
                 true, 'foo', 'static', true, 0, ''
-            )
+            ),
+
+            // generic array
+            array(
+                'array<int, string> foo()',
+                true, 'foo', 'array<int, string>', false, 0, ''
+            ),
+
+            // nested generics
+            array(
+                'array<int, array<string, mixed>> foo()',
+                true, 'foo', 'array<int, array<string, mixed>>', false, 0, ''
+            ),
+
+            // closure
+            array(
+                '(\Closure(int, string): bool) foo()',
+                true, 'foo', '(\Closure(int, string): bool)', false, 0, ''
+            ),
         );
     }
 }
