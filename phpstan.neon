@@ -3,5 +3,33 @@ parameters:
     ignoreErrors:
         - '#Method phpDocumentor\\Reflection\\DocBlock\\StandardTagFactory::createTag\(\) should return phpDocumentor\\Reflection\\DocBlock\\Tag but returns mixed#'
         - '#Offset 2 on array\{string, 28, int\} on left side of \?\? always exists and is not nullable\.#'
+        -
+            message: "#^Parameter \\#1 \\$constExprParser of class PHPStan\\\\PhpDocParser\\\\Parser\\\\TypeParser constructor expects PHPStan\\\\PhpDocParser\\\\Parser\\\\ConstExprParser\\|null, PHPStan\\\\PhpDocParser\\\\ParserConfig given\\.$#"
+            count: 1
+            path: src/DocBlock/Tags/Factory/AbstractPHPStanFactory.php
+        -
+            message: "#^Parameter \\#1 \\$parseDoctrineAnnotations of class PHPStan\\\\PhpDocParser\\\\Lexer\\\\Lexer constructor expects bool, PHPStan\\\\PhpDocParser\\\\ParserConfig given\\.$#"
+            count: 1
+            path: src/DocBlock/Tags/Factory/AbstractPHPStanFactory.php
+        -
+            message: "#^Parameter \\#1 \\$typeParser of class PHPStan\\\\PhpDocParser\\\\Parser\\\\PhpDocParser constructor expects PHPStan\\\\PhpDocParser\\\\Parser\\\\TypeParser, PHPStan\\\\PhpDocParser\\\\ParserConfig given\\.$#"
+            count: 1
+            path: src/DocBlock/Tags/Factory/AbstractPHPStanFactory.php
+        -
+            message: "#^Parameter \\#1 \\$unescapeStrings of class PHPStan\\\\PhpDocParser\\\\Parser\\\\ConstExprParser constructor expects bool, PHPStan\\\\PhpDocParser\\\\ParserConfig given\\.$#"
+            count: 1
+            path: src/DocBlock/Tags/Factory/AbstractPHPStanFactory.php
+        -
+            message: "#^Parameter \\#2 \\$constantExprParser of class PHPStan\\\\PhpDocParser\\\\Parser\\\\PhpDocParser constructor expects PHPStan\\\\PhpDocParser\\\\Parser\\\\ConstExprParser, PHPStan\\\\PhpDocParser\\\\Parser\\\\TypeParser given\\.$#"
+            count: 1
+            path: src/DocBlock/Tags/Factory/AbstractPHPStanFactory.php
+        -
+            message: "#^Parameter \\#2 \\$quoteAwareConstExprString of class PHPStan\\\\PhpDocParser\\\\Parser\\\\TypeParser constructor expects bool, PHPStan\\\\PhpDocParser\\\\Parser\\\\ConstExprParser given\\.$#"
+            count: 1
+            path: src/DocBlock/Tags/Factory/AbstractPHPStanFactory.php
+        -
+            message: "#^Parameter \\#3 \\$requireWhitespaceBeforeDescription of class PHPStan\\\\PhpDocParser\\\\Parser\\\\PhpDocParser constructor expects bool, PHPStan\\\\PhpDocParser\\\\Parser\\\\ConstExprParser given\\.$#"
+            count: 1
+            path: src/DocBlock/Tags/Factory/AbstractPHPStanFactory.php
     paths:
         - src
