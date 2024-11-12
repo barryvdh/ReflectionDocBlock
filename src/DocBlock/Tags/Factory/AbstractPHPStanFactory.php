@@ -67,6 +67,7 @@ class AbstractPHPStanFactory implements Factory
                 true
             );
         }
+
         $this->factories = $factories;
     }
 

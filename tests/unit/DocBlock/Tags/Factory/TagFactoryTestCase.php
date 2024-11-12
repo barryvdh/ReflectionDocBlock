@@ -45,7 +45,7 @@ abstract class TagFactoryTestCase extends TestCase
             $phpDocParser = new PhpDocParser(new TypeParser($constParser), $constParser);
         }
 
-        $tagNode = ($phpDocParser)->parseTag(new TokenIterator($lexer->tokenize($tag)));
+        $tagNode = $phpDocParser->parseTag(new TokenIterator($lexer->tokenize($tag)));
         if (property_exists($tagNode->value, 'description') === true) {
             $tagNode->value->setAttribute('description', $tagNode->value->description);
         }
