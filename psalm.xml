@@ -68,5 +68,12 @@
                 <file name="src/Utils.php"/>
             </errorLevel>
         </ArgumentTypeCoercion>
+
+        <InvalidArgument>
+            <errorLevel type="suppress">
+                <referencedFunction name="PHPStan\PhpDocParser\Parser\PhpDocParser::__construct"/>
+                <referencedFunction name="PHPStan\PhpDocParser\Parser\TypeParser::__construct"/>
+            </errorLevel>
+        </InvalidArgument>
     </issueHandlers>
 </psalm>

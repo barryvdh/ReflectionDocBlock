@@ -2,7 +2,8 @@
   "symbol-whitelist" : [
     "null", "true", "false",
     "static", "self", "parent",
-    "array", "string", "int", "float", "bool", "iterable", "callable", "void", "object", "XSLTProcessor"
+    "array", "string", "int", "float", "bool", "iterable", "callable", "void", "object", "XSLTProcessor",
+    "PHPStan\\PhpDocParser\\ParserConfig"
   ],
   "php-core-extensions" : [
     "Core",
