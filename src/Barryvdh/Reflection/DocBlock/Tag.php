@@ -113,8 +113,8 @@ class Tag implements \Reflector
      */
     final public static function createInstance(
         $tag_line,
-        DocBlock $docblock = null,
-        Location $location = null
+        ?DocBlock $docblock = null,
+        ?Location $location = null
     ) {
         if (!preg_match(
             '/^@(' . self::REGEX_TAGNAME . ')(?:\s*([^\s].*)|$)?/us',
@@ -194,8 +194,8 @@ class Tag implements \Reflector
     public function __construct(
         $name,
         $content,
-        DocBlock $docblock = null,
-        Location $location = null
+        ?DocBlock $docblock = null,
+        ?Location $location = null
     ) {
         $this
             ->setName($name)
@@ -323,7 +323,7 @@ class Tag implements \Reflector
      * 
      * @return $this
      */
-    public function setDocBlock(DocBlock $docblock = null)
+    public function setDocBlock(?DocBlock $docblock = null)
     {
         $this->docblock = $docblock;
 
@@ -347,7 +347,7 @@ class Tag implements \Reflector
      * 
      * @return $this
      */
-    public function setLocation(Location $location = null)
+    public function setLocation(?Location $location = null)
     {
         $this->location = $location;
 

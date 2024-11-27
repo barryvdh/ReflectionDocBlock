@@ -71,8 +71,8 @@ class DocBlock implements \Reflector
      */
     public function __construct(
         $docblock,
-        Context $context = null,
-        Location $location = null
+        ?Context $context = null,
+        ?Location $location = null
     ) {
         if (is_object($docblock)) {
             if (!method_exists($docblock, 'getDocComment')) {
