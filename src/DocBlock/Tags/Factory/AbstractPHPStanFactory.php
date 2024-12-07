@@ -75,11 +75,13 @@ class AbstractPHPStanFactory implements Factory
     {
         $tokens = $this->tokenizeLine($tagLine);
         $ast = $this->parser->parseTag($tokens);
-        if (property_exists($ast->value, 'description') === true) {
-            $ast->value->setAttribute(
-                'description',
-                $ast->value->description . $tokens->joinUntil(Lexer::TOKEN_END)
-            );
+        if (class_exists(ParserConfig::class) === false) {
+            if (property_exists($ast->value, 'description') === true) {
+                $ast->value->setAttribute(
+                    'description',
+                    $ast->value->description . $tokens->joinUntil(Lexer::TOKEN_END)
+                );
+            }
         }
 
         if ($context === null) {

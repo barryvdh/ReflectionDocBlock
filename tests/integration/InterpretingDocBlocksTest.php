@@ -463,4 +463,22 @@ DOCBLOCK;
             $docblock->getTags()
         );
     }
+
+    public function testParamTagDescriptionIsCorrectly(): void
+    {
+        $docComment = '
+	/**
+	 * @param int $baz Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas varius, tellus in cursus
+	 *     dictum, justo odio sagittis velit, id iaculis mi dui id nisi.
+	 */
+';
+
+        $factory = DocBlockFactory::createInstance();
+        $docblock = $factory->create($docComment);
+
+        $paramTags = $docblock->getTagsWithTypeByName('param')[0];
+
+        self::assertSame('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas varius, tellus in cursus
+dictum, justo odio sagittis velit, id iaculis mi dui id nisi.', (string) $paramTags->getDescription());
+    }
 }
