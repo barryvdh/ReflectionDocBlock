@@ -14,9 +14,9 @@
 namespace Barryvdh\Reflection\DocBlock\Tag;
 
 /**
- * Reflection class for a @tempalte tag in a Docblock.
+ * Reflection class for a @template tag in a Docblock.
  *
- * @author  chack1172 <mike.vanriel@naenius.com>
+ * @author  chack1172 <chack1172@gmail.com>
  * @license http://www.opensource.org/licenses/mit-license.php MIT
  * @link    http://phpdoc.org
  */
