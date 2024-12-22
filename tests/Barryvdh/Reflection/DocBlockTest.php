@@ -336,4 +336,22 @@ DOCBLOCK;
         $this->assertCount(1, $object->getTagsByName('return'));
         $this->assertCount(2, $object->getTagsByName('param'));
     }
+
+    /**
+     * @covers \Barryvdh\Reflection\DocBlock::parseTags
+     *
+     * @return void
+     */
+    public function testGenericsAreParsed()
+    {
+        $fixture = <<<DOCBLOCK
+        /**
+         * @template TValue
+         * @param TValue
+         * @return TValue
+         */
+        DOCBLOCK;
+        $object = new DocBlock($fixture);
+        $this->assertSame(array('TValue'), $object->getGenerics());
+    }
 }

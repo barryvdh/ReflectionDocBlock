@@ -145,6 +145,27 @@ class CollectionTest extends TestCase
     }
 
     /**
+     * @param string $fixture
+     * @param array  $expected
+     *
+     * @dataProvider provideTypesToExpandWithGenerics
+     * @covers Barryvdh\Reflection\DocBlock\Type\Collection::add
+     *
+     * @return void
+     */
+    public function testAddWithGenerics($fixture, $expected)
+    {
+        $collection = new Collection(
+            array(),
+            new Context('\My\Space', array('Alias' => '\My\Space\Aliasing')),
+            array('TValue')
+        );
+        $collection->add($fixture);
+
+        $this->assertSame($expected, $collection->getArrayCopy());
+    }
+
+    /**
      * @covers Barryvdh\Reflection\DocBlock\Type\Collection::add
      *
      * @return void
@@ -265,6 +286,24 @@ class CollectionTest extends TestCase
                 'phpDocumentor\LinkDescriptor::$link',
                 array('\phpDocumentor\LinkDescriptor::$link')
             ),
+        );
+    }
+
+    /**
+     * Returns the types and their expected values to test the retrieval of
+     * types including generics.
+     *
+     * @param string $method    Name of the method consuming this data provider.
+     * @param string $namespace Name of the namespace to user as basis.
+     *
+     * @return string[]
+     */
+    public function provideTypesToExpandWithGenerics($method, $namespace = '\My\Space\\')
+    {
+        return array(
+            array('TValue', array('TValue')),
+            array('TValue[]', array('TValue[]')),
+            array('TValue|DocBlock', array('TValue', $namespace . 'DocBlock')),
         );
     }
 }
