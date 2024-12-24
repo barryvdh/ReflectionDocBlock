@@ -121,7 +121,7 @@ class ReturnTag extends Tag
             $this->types = new Collection(
                 array($this->type),
                 $this->docblock ? $this->docblock->getContext() : null,
-                $this->docblock ? $this->docblock->getGenerics() : array(),
+                $this->docblock ? $this->docblock->getGenerics() : array()
             );
         }
         return $this->types;
