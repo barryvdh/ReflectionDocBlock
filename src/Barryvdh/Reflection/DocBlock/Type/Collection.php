@@ -201,7 +201,7 @@ class Collection extends \ArrayObject
             return '';
         }
 
-        if (substr($type, 0, 6) === 'array<' && substr($type, -1) === '>') {
+        if (preg_match('/^[\w-]+<.*>$/', $type)) {
             return $type;
         }
 

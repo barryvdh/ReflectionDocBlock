@@ -220,6 +220,10 @@ class CollectionTest extends TestCase
                 array($namespace.'DocBlock[]', 'int[]')
             ),
             array(
+                'array<string>',
+                array('array<string>')
+            ),
+            array(
                 'array<int, string>',
                 array('array<int, string>')
             ),
@@ -242,6 +246,42 @@ class CollectionTest extends TestCase
             array(
                 'Alias\LinkDescriptor::setLink()',
                 array('\My\Space\Aliasing\LinkDescriptor::setLink()')
+            ),
+            array(
+                'int<0, 100>',
+                array('int<0, 100>')
+            ),
+            array(
+                'non-empty-array<string>',
+                array('non-empty-array<string>')
+            ),
+            array(
+                'non-empty-array<int, string>',
+                array('non-empty-array<int, string>')
+            ),
+            array(
+                'list<string>',
+                array('list<string>')
+            ),
+            array(
+                'non-empty-list<string>',
+                array('non-empty-list<string>')
+            ),
+            array(
+                'key-of<MyClass::ARRAY_CONST>',
+                array('key-of<MyClass::ARRAY_CONST>')
+            ),
+            array(
+                'value-of<MyClass::ARRAY_CONST>',
+                array('value-of<MyClass::ARRAY_CONST>')
+            ),
+            array(
+                'value-of<MyBackedEnum>',
+                array('value-of<MyBackedEnum>')
+            ),
+            array(
+                'iterable<string>',
+                array('iterable<string>')
             ),
         );
     }
