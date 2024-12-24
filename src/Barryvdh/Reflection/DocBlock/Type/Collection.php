@@ -78,7 +78,7 @@ class Collection extends \ArrayObject
         array $generics = array()
     ) {
         $this->context = null === $context ? new Context() : $context;
-        $this->generics = $generics;
+        $this->generics = array_merge($this->context->getGenerics(), $generics);
 
         foreach ($types as $type) {
             $this->add($type);
