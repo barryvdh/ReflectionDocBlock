@@ -37,7 +37,14 @@ class Collection extends \ArrayObject
     protected static $keywords = array(
         'string', 'int', 'integer', 'bool', 'boolean', 'float', 'double',
         'object', 'mixed', 'array', 'resource', 'void', 'null', 'scalar',
-        'callback', 'callable', 'false', 'true', 'self', '$this', 'static'
+        'callback', 'callable', 'false', 'true', 'self', '$this', 'static',
+        'array-key', 'number', 'iterable', 'pure-callable', 'closed-resource',
+        'open-resource', 'positive-int', 'negative-int', 'non-positive-int',
+        'non-negative-int', 'non-zero-int', 'non-empty-array', 'list',
+        'non-empty-list', 'key-of', 'value-of', 'template-type', 'class-string',
+        'callable-string', 'numeric-string', 'non-empty-string',
+        'non-falsy-string', 'literal-string', 'lowercase-string', 'never',
+        'never-return', 'never-returns', 'no-return', 'int-mask', 'int-mask-of'
     );
 
     /**
