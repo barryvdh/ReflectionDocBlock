@@ -68,7 +68,7 @@ class Collection extends \ArrayObject
     public function __construct(
         array $types = array(),
         ?Context $context = null,
-        array $generics = array(),
+        array $generics = array()
     ) {
         $this->context = null === $context ? new Context() : $context;
         $this->generics = $generics;
