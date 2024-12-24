@@ -345,12 +345,12 @@ DOCBLOCK;
     public function testGenericsAreParsed()
     {
         $fixture = <<<DOCBLOCK
-        /**
-         * @template TValue
-         * @param TValue
-         * @return TValue
-         */
-        DOCBLOCK;
+/**
+ * @template TValue
+ * @param TValue
+ * @return TValue
+ */
+DOCBLOCK;
         $object = new DocBlock($fixture);
         $this->assertSame(array('TValue'), $object->getGenerics());
     }
