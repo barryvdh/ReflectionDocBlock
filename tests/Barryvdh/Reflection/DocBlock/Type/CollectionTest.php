@@ -157,7 +157,7 @@ class CollectionTest extends TestCase
     {
         $collection = new Collection(
             array(),
-            new Context('\My\Space', array('Alias' => '\My\Space\Aliasing')),
+            new Context('\My\Space', array('Alias' => '\My\Space\Aliasing'), '', array('TParent')),
             array('TValue')
         );
         $collection->add($fixture);
@@ -304,6 +304,7 @@ class CollectionTest extends TestCase
             array('TValue', array('TValue')),
             array('TValue[]', array('TValue[]')),
             array('TValue|DocBlock', array('TValue', $namespace . 'DocBlock')),
+            array('TParent', array('TParent')),
         );
     }
 }
