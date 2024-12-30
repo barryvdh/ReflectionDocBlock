@@ -283,6 +283,14 @@ class CollectionTest extends TestCase
                 'iterable<string>',
                 array('iterable<string>')
             ),
+            array(
+                'callable',
+                array('callable')
+            ),
+            array(
+                'callable(int, string): int',
+                array('callable(int, string): int')
+            )
         );
     }
 

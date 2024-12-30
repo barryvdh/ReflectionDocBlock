@@ -205,6 +205,11 @@ class Collection extends \ArrayObject
             return $type;
         }
 
+        // Check for callable types
+        if (preg_match('/\(.*?(?=\:)/', $type)) {
+            return $type;
+        }
+
         if($type[0] === '(') {
             return $type;
         }
