@@ -183,6 +183,24 @@ class ParamTagTest extends TestCase
                 '$callback',
                 ''
             ),
+
+            // array shapes
+            array(
+                'param',
+                'array{foo: string, bar: int} $array',
+                'array{foo: string, bar: int}',
+                array('array{foo: string, bar: int}'),
+                '$array',
+                ''
+            ),
+            array(
+                'param',
+                'MyArray[\'key\'] $value',
+                'MyArray[\'key\']',
+                array('MyArray[\'key\']'),
+                '$value',
+                ''
+            )
         );
     }
 }

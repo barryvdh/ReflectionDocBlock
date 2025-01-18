@@ -161,9 +161,9 @@ class Collection extends \ArrayObject
                 $type_parts[] = $curr_type;
                 $curr_type = '';
             } else {
-                if ($char === '<' || $char === '(') {
+                if (in_array($char, ['<', '(', '[', '{'])) {
                     $nest_level++;
-                } else if ($char === '>' || $char === ')') {
+                } else if (in_array($char, ['>', ')', ']', '}'])) {
                     $nest_level--;
                 }
 
@@ -201,7 +201,8 @@ class Collection extends \ArrayObject
             return '';
         }
 
-        if (preg_match('/^[\w-]+<.*>$/', $type)) {
+        // Check for generics values and array shapes
+        if (preg_match('/^[\w-]+(<.+>|\[.+\]|{.+})$/', $type)) {
             return $type;
         }
 
@@ -211,6 +212,11 @@ class Collection extends \ArrayObject
         }
 
         if($type[0] === '(') {
+            return $type;
+        }
+
+        // Literal strings
+        if ($type[0] === '"' || $type[0] === "'") {
             return $type;
         }
 

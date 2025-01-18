@@ -119,6 +119,13 @@ class ReturnTagTest extends TestCase
                 'array<int, string|bool>|string',
                 array('array<int, string|bool>', 'string'),
                 'Types of Bobs'
+            ),
+            array(
+                'return',
+                'MyArray[\'key\'] Type of Bobs',
+                'MyArray[\'key\']',
+                array('MyArray[\'key\']'),
+                'Type of Bobs'
             )
         );
     }

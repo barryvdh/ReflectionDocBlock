@@ -240,6 +240,18 @@ class CollectionTest extends TestCase
                 array('array<int, string|array<int, bool>>', 'array<int, float>', 'string')
             ),
             array(
+                'array{ 0: string, 1: string|int }',
+                array('array{ 0: string, 1: string|int }')
+            ),
+            array(
+                "array{ 'key': string, 'value': string|int }",
+                array("array{ 'key': string, 'value': string|int }")
+            ),
+            array(
+                "MyArray['bar']",
+                array("MyArray['bar']")
+            ),
+            array(
                 'LinkDescriptor::setLink()',
                 array($namespace.'LinkDescriptor::setLink()')
             ),
@@ -290,6 +302,10 @@ class CollectionTest extends TestCase
             array(
                 'callable(int, string): int',
                 array('callable(int, string): int')
+            ),
+            array(
+                "'text'",
+                array("'text'")
             )
         );
     }
