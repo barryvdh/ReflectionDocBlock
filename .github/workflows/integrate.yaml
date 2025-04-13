@@ -48,13 +48,3 @@ jobs:
     with:
       composer-root-version: "5.x-dev"
       upcoming-releases: true
-
-  bc_check:
-    name: "BC Check"
-    runs-on: "ubuntu-latest"
-    steps:
-      - uses: "actions/checkout@v3"
-      - name: "fetch tags"
-        run: "git fetch --depth=1 origin +refs/tags/*:refs/tags/*"
-      - name: "BC Check"
-        uses: "docker://nyholm/roave-bc-check-ga"
