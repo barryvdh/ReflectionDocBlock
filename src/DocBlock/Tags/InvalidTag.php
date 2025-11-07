@@ -20,6 +20,8 @@ use function is_object;
 use function is_resource;
 use function sprintf;
 
+use const PHP_VERSION_ID;
+
 /**
  * This class represents an exception during the tag creation
  *
@@ -98,9 +100,11 @@ final class InvalidTag implements Tag
             $exception = $exception->getPrevious();
         } while ($exception !== null);
 
-        if (PHP_VERSION_ID < 80100) {
-            $traceProperty->setAccessible(false);
+        if (PHP_VERSION_ID >= 80100) {
+            return;
         }
+
+        $traceProperty->setAccessible(false);
     }
 
     /**
