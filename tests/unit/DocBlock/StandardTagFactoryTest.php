@@ -525,6 +525,11 @@ class StandardTagFactoryTest extends TestCase
                 'tag',
                 '@tag (is valid)',
             ],
+            'full-qualified-class-name following a tag name is valid' => [
+                '@tag \InvalidArgumentException',
+                'tag',
+                '@tag \InvalidArgumentException',
+            ],
         ];
     }
 
