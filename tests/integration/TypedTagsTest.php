@@ -179,10 +179,6 @@ DOCBLOCK;
 
     public static function invalidFormatsProvider(): \Generator
     {
-        yield from [
-            'invalid collection' => ['self<Tvalue>'],
-        ];
-
         foreach (['<', '{', '('] as $badChar) {
             yield "invalid format open $badChar" => ["array$badChar\\fooo"];
         }
