@@ -15,7 +15,7 @@
     ],
     "require": {
         "php": "^7.4 || ^8.0",
-        "phpdocumentor/type-resolver": "^1.7",
+        "phpdocumentor/type-resolver": "^1.7|^2.x-dev",
         "webmozart/assert": "^1.9.1 || ^2",
         "phpdocumentor/reflection-common": "^2.2",
         "ext-filter": "*",

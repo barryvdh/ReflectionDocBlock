@@ -335,7 +335,7 @@ DOC;
                     ),
                     new Param(
                         'args',
-                        new Compound([new Array_(new Mixed_()), new String_()]),
+                        new Compound([new Array_(), new String_()]),
                         false,
                         new Description(
                             '{' . "\n" .
@@ -356,7 +356,7 @@ DOC;
                         )
                     ),
                     new Return_(
-                        new Compound([new Array_(new Mixed_()), new Object_(new Fqsen('\WP_Error'))]),
+                        new Compound([new Array_(), new Object_(new Fqsen('\WP_Error'))]),
                         new Description('The result (also stored in `WP_Upgrader::$result`), or a WP_Error on failure.')
                     ),
                 ],
@@ -407,7 +407,7 @@ identifier has already been registered.',
                     new Since('6.5.0', new Description('')),
                     new Param(
                         'deps',
-                        new Array_(new Mixed_()),
+                        new Array_(),
                         false,
                         new Description("{
     Optional. List of dependencies.

@@ -16,7 +16,7 @@ use phpDocumentor\Reflection\Type;
 use phpDocumentor\Reflection\Types\Array_;
 use phpDocumentor\Reflection\Types\Callable_;
 use phpDocumentor\Reflection\Types\CallableParameter;
-use phpDocumentor\Reflection\Types\Collection;
+use phpDocumentor\Reflection\PseudoTypes\Generic;
 use phpDocumentor\Reflection\Types\Integer;
 use phpDocumentor\Reflection\Types\Nullable;
 use phpDocumentor\Reflection\Types\Object_;
@@ -160,19 +160,19 @@ DOCBLOCK;
             ],
             [
                 'Collection<int, string>',
-                new Collection(new Fqsen('\\Collection'), new String_(), new Integer()),
+                new Generic(new Fqsen('\\Collection'), [new Integer(), new String_()]),
             ],
             [
                 'Collection<TKey, Tvalue>',
-                new Collection(new Fqsen('\\Collection'), new Object_(new Fqsen('\\Tvalue')), new Object_(new Fqsen('\\TKey'))),
+                new Generic(new Fqsen('\\Collection'), [new Object_(new Fqsen('\\TKey')), new Object_(new Fqsen('\\Tvalue'))]),
             ],
             [
                 'Collection<Tvalue>',
-                new Collection(new Fqsen('\\Collection'), new Object_(new Fqsen('\\Tvalue'))),
+                new Generic(new Fqsen('\\Collection'), [new Object_(new Fqsen('\\Tvalue'))]),
             ],
             [
                 'callable(int $foo, string $bar): void',
-                new Callable_([new CallableParameter(new Integer(), 'foo'), new CallableParameter(new String_(), 'bar')], new Void_()),
+                new Callable_('callable', [new CallableParameter(new Integer(), 'foo'), new CallableParameter(new String_(), 'bar')], new Void_()),
             ],
         ];
     }

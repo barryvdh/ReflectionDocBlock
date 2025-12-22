@@ -200,8 +200,8 @@ class ReturnTest extends TestCase
 
         $fixture = Return_::create('array<string, string> My Description', $resolver, $descriptionFactory, $context);
 
-        $this->assertSame('array<string,string> My Description', (string) $fixture);
-        $this->assertEquals('array<string,string>', $fixture->getType());
+        $this->assertSame('array<string, string> My Description', (string) $fixture);
+        $this->assertEquals('array<string, string>', $fixture->getType());
         $this->assertSame($description, $fixture->getDescription());
     }
 
