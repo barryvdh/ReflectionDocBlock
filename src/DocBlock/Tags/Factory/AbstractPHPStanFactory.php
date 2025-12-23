@@ -46,27 +46,14 @@ class AbstractPHPStanFactory implements Factory
 
     public function __construct(PHPStanFactory ...$factories)
     {
-        if (class_exists(ParserConfig::class)) {
-            $config = new ParserConfig(['indexes' => true, 'lines' => true]);
-            $this->lexer = new Lexer($config);
-            $constParser = new ConstExprParser($config);
-            $this->parser = new PhpDocParser(
-                $config,
-                new TypeParser($config, $constParser),
-                $constParser
-            );
-        } else {
-            $this->lexer = new Lexer(true);
-            $constParser = new ConstExprParser(true, true, ['lines' => true, 'indexes' => true]);
-            $this->parser = new PhpDocParser(
-                new TypeParser($constParser, true, ['lines' => true, 'indexes' => true]),
-                $constParser,
-                true,
-                true,
-                ['lines' => true, 'indexes' => true],
-                true
-            );
-        }
+        $config = new ParserConfig(['indexes' => true, 'lines' => true]);
+        $this->lexer = new Lexer($config);
+        $constParser = new ConstExprParser($config);
+        $this->parser = new PhpDocParser(
+            $config,
+            new TypeParser($config, $constParser),
+            $constParser
+        );
 
         $this->factories = $factories;
     }
