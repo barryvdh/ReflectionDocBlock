@@ -23,7 +23,7 @@ use function preg_match;
 /**
  * Reflection class for a {@}since tag in a Docblock.
  */
-final class Since extends BaseTag implements Factory\StaticMethod
+final class Since extends BaseTag
 {
     protected string $name = 'since';
 

@@ -23,7 +23,7 @@ use Webmozart\Assert\Assert;
 /**
  * Reflection class for a {@}template-covariant tag in a Docblock.
  */
-final class TemplateCovariant extends TagWithType implements Factory\StaticMethod
+final class TemplateCovariant extends TagWithType
 {
     public function __construct(Type $type, ?Description $description = null)
     {

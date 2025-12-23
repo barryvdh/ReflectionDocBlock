@@ -14,6 +14,8 @@ declare(strict_types=1);
 namespace phpDocumentor\Reflection\DocBlock\Tags;
 
 use InvalidArgumentException;
+use phpDocumentor\Reflection\DocBlock\Tag;
+use phpDocumentor\Reflection\Exception\CannotCreateTag;
 use phpDocumentor\Reflection\Type;
 
 use function in_array;
@@ -33,6 +35,11 @@ abstract class TagWithType extends BaseTag
     public function getType(): ?Type
     {
         return $this->type;
+    }
+
+    public static function create(string $body): Tag
+    {
+        throw new CannotCreateTag('Typed tag cannot be created');
     }
 
     /**

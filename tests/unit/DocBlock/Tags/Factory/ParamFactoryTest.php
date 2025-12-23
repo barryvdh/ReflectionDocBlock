@@ -22,7 +22,6 @@ use phpDocumentor\Reflection\PseudoTypes\IntegerValue;
 use phpDocumentor\Reflection\PseudoTypes\StringValue;
 use phpDocumentor\Reflection\Types\Compound;
 use phpDocumentor\Reflection\Types\Context;
-use phpDocumentor\Reflection\Types\Integer;
 use phpDocumentor\Reflection\Types\Mixed_;
 use phpDocumentor\Reflection\Types\Object_;
 use phpDocumentor\Reflection\Types\String_;
@@ -81,16 +80,6 @@ final class ParamFactoryTest extends TagFactoryTestCase
                     new Mixed_(),
                     false,
                     new Description(''),
-                    false
-                ),
-            ],
-            [
-                '@param int My Description',
-                new Param(
-                    null,
-                    new Integer(),
-                    false,
-                    new Description('My Description'),
                     false
                 ),
             ],

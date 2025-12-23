@@ -9,7 +9,7 @@ use phpDocumentor\Reflection\DocBlock\Tags\Formatter;
 use phpDocumentor\Reflection\FqsenResolver;
 use phpDocumentor\Reflection\DocBlock\Tags\Factory\StaticMethod;
 
-final class CustomServiceInterface implements Tag, StaticMethod
+final class CustomServiceInterface implements Tag
 {
     public $formatter;
 

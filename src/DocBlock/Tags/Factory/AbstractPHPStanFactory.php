@@ -24,7 +24,6 @@ use PHPStan\PhpDocParser\Parser\TypeParser;
 use PHPStan\PhpDocParser\ParserConfig;
 use RuntimeException;
 
-use function class_exists;
 use function ltrim;
 use function property_exists;
 use function rtrim;

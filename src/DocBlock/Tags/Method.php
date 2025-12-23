@@ -41,7 +41,7 @@ use const E_USER_DEPRECATED;
 /**
  * Reflection class for an {@}method in a Docblock.
  */
-final class Method extends BaseTag implements Factory\StaticMethod
+final class Method extends BaseTag
 {
     protected string $name = 'method';
 

@@ -23,7 +23,7 @@ use Webmozart\Assert\Assert;
 /**
  * Reflection class for a {@}throws tag in a Docblock.
  */
-final class Throws extends TagWithType implements Factory\StaticMethod
+final class Throws extends TagWithType
 {
     public function __construct(Type $type, ?Description $description = null)
     {

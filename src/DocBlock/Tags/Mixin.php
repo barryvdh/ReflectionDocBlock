@@ -23,7 +23,7 @@ use Webmozart\Assert\Assert;
 /**
  * Reflection class for a {@}mixin tag in a Docblock.
  */
-final class Mixin extends TagWithType implements Factory\StaticMethod
+final class Mixin extends TagWithType
 {
     public function __construct(Type $type, ?Description $description = null)
     {
