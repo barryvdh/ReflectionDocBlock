@@ -8,6 +8,7 @@ use phpDocumentor\Reflection\DocBlock\DescriptionFactory;
 use phpDocumentor\Reflection\DocBlock\Tag;
 use phpDocumentor\Reflection\DocBlock\Tags\InvalidTag;
 use phpDocumentor\Reflection\DocBlock\Tags\Param;
+use phpDocumentor\Reflection\Exception\ParserException;
 use phpDocumentor\Reflection\TypeResolver;
 use phpDocumentor\Reflection\Types\Context;
 use PHPStan\PhpDocParser\Ast\PhpDoc\InvalidTagValueNode;
@@ -40,7 +41,9 @@ final class ParamFactory implements PHPStanFactory
         $tagValue = $node->value;
 
         if ($tagValue instanceof InvalidTagValueNode) {
-            return InvalidTag::create($tagValue->value, 'param')->withError($tagValue->exception);
+            return InvalidTag::create($tagValue->value, 'param')->withError(
+                ParserException::from($tagValue->exception)
+            );
         }
 
         Assert::isInstanceOfAny(

@@ -20,11 +20,10 @@ use phpDocumentor\Reflection\Assets\CustomServiceClass;
 use phpDocumentor\Reflection\Assets\CustomServiceInterface;
 use phpDocumentor\Reflection\Assets\CustomTagFactory;
 use phpDocumentor\Reflection\DocBlock\Tags\Author;
+use phpDocumentor\Reflection\DocBlock\Tags\Deprecated;
 use phpDocumentor\Reflection\DocBlock\Tags\Formatter;
 use phpDocumentor\Reflection\DocBlock\Tags\Formatter\PassthroughFormatter;
 use phpDocumentor\Reflection\DocBlock\Tags\Generic;
-use phpDocumentor\Reflection\DocBlock\Tags\InvalidTag;
-use phpDocumentor\Reflection\DocBlock\Tags\Return_;
 use phpDocumentor\Reflection\DocBlock\Tags\See;
 use phpDocumentor\Reflection\Fqsen;
 use phpDocumentor\Reflection\FqsenResolver;
@@ -69,7 +68,7 @@ class StandardTagFactoryTest extends TestCase
             ->with($expectedDescriptionText, $context)
             ->andReturn($expectedDescription);
 
-        $tagFactory = new StandardTagFactory(m::mock(FqsenResolver::class));
+        $tagFactory = StandardTagFactory::createInstance(m::mock(FqsenResolver::class));
         $tagFactory->addService($descriptionFactory, DescriptionFactory::class);
 
         $tag = $tagFactory->create('@' . $expectedTagName . ' This is a description', $context);
@@ -94,7 +93,7 @@ class StandardTagFactoryTest extends TestCase
         $expectedDescriptionText = ' foo Bar 123 ';
         $context                 = new Context('');
 
-        $tagFactory = new StandardTagFactory(new FqsenResolver());
+        $tagFactory = StandardTagFactory::createInstance(new FqsenResolver());
         $tagFactory->addService(new DescriptionFactory($tagFactory), DescriptionFactory::class);
 
         $tag = $tagFactory->create('@' . $expectedTagName . $expectedDescriptionText, $context);
@@ -114,7 +113,7 @@ class StandardTagFactoryTest extends TestCase
     public function testCreatingASpecificTag(): void
     {
         $context    = new Context('');
-        $tagFactory = new StandardTagFactory(m::mock(FqsenResolver::class));
+        $tagFactory = StandardTagFactory::createInstance(m::mock(FqsenResolver::class));
 
         $tag = $tagFactory->create('@author Mike van Riel <me@mikevanriel.com>', $context);
 
@@ -143,7 +142,7 @@ class StandardTagFactoryTest extends TestCase
         $descriptionFactory = m::mock(DescriptionFactory::class);
         $descriptionFactory->shouldIgnoreMissing();
 
-        $tagFactory = new StandardTagFactory($resolver);
+        $tagFactory = StandardTagFactory::createInstance($resolver);
         $tagFactory->addService($descriptionFactory, DescriptionFactory::class);
 
         $tag = $tagFactory->create('@see Tag');
@@ -163,7 +162,8 @@ class StandardTagFactoryTest extends TestCase
     public function testPassingYourOwnSetOfTagHandlers(): void
     {
         $context    = new Context('');
-        $tagFactory = new StandardTagFactory(m::mock(FqsenResolver::class), ['user' => Author::class]);
+        $tagFactory = StandardTagFactory::createInstance(m::mock(FqsenResolver::class));
+        $tagFactory->registerTagHandler('user', Author::class);
 
         $tag = $tagFactory->create('@user Mike van Riel <me@mikevanriel.com>', $context);
 
@@ -181,16 +181,11 @@ class StandardTagFactoryTest extends TestCase
      */
     public function testPassingYourOwnSetOfTagHandlersWithGermanChars(): void
     {
-        $typeResolver       = new TypeResolver();
         $fqsenResolver      = new FqsenResolver();
-        $tagFactory         = new StandardTagFactory($fqsenResolver);
-        $descriptionFactory = new DescriptionFactory($tagFactory);
+        $tagFactory         = StandardTagFactory::createInstance($fqsenResolver);
         $context            = new Context('');
 
-        $tagFactory = new StandardTagFactory(
-            $fqsenResolver,
-            ['my-täg' => Author::class]
-        );
+        $tagFactory->registerTagHandler('my-täg', Author::class);
 
         $tag = $tagFactory->create('@my-täg foo bar ', $context);
 
@@ -209,17 +204,11 @@ class StandardTagFactoryTest extends TestCase
      */
     public function testPassingYourOwnSetOfTagHandlersWithoutComment(): void
     {
-        $typeResolver       = new TypeResolver();
         $fqsenResolver      = new FqsenResolver();
-        $tagFactory         = new StandardTagFactory($fqsenResolver);
-        $descriptionFactory = new DescriptionFactory($tagFactory);
+        $tagFactory         = StandardTagFactory::createInstance($fqsenResolver);
         $context            = new Context('');
 
-        $tagFactory = new StandardTagFactory(
-            $fqsenResolver,
-            ['my-täg' => Author::class]
-        );
-
+        $tagFactory->registerTagHandler('my-täg', Author::class);
         $tag = $tagFactory->create('@my-täg', $context);
 
         $this->assertInstanceOf(Author::class, $tag);
@@ -233,7 +222,7 @@ class StandardTagFactoryTest extends TestCase
         $customFactory = new CustomTagFactory();
         $injectedClass = new CustomServiceClass();
 
-        $tagFactory = new StandardTagFactory($fqsenResolver);
+        $tagFactory = StandardTagFactory::createInstance($fqsenResolver);
         $tagFactory->addService($injectedClass);
         $tagFactory->registerTagHandler('param', $customFactory);
         $tag = $tagFactory->create('@param foo');
@@ -259,11 +248,11 @@ class StandardTagFactoryTest extends TestCase
 
         $typeResolver       = new TypeResolver();
         $fqsenResolver      = new FqsenResolver();
-        $tagFactory         = new StandardTagFactory($fqsenResolver);
+        $tagFactory         = StandardTagFactory::createInstance($fqsenResolver);
         $descriptionFactory = new DescriptionFactory($tagFactory);
         $context            = new Context('');
 
-        $tagFactory = new StandardTagFactory(
+        $tagFactory = StandardTagFactory::createInstance(
             $fqsenResolver,
             ['my-täg' => Author::class]
         );
@@ -283,7 +272,7 @@ class StandardTagFactoryTest extends TestCase
         $this->expectExceptionMessage(
             'The tag "@user[myuser" does not seem to be wellformed, please check it for errors'
         );
-        $tagFactory = new StandardTagFactory(m::mock(FqsenResolver::class));
+        $tagFactory = StandardTagFactory::createInstance(m::mock(FqsenResolver::class));
         $tagFactory->create('@user[myuser');
     }
 
@@ -296,7 +285,7 @@ class StandardTagFactoryTest extends TestCase
     public function testAddParameterToServiceLocator(): void
     {
         $resolver   = m::mock(FqsenResolver::class);
-        $tagFactory = new StandardTagFactory($resolver);
+        $tagFactory = StandardTagFactory::createInstance($resolver);
         $tagFactory->registerTagHandler('spy', CustomParam::class);
 
         $tagFactory->addParameter('myParam', 'myValue');
@@ -316,7 +305,7 @@ class StandardTagFactoryTest extends TestCase
         $service = new PassthroughFormatter();
 
         $resolver   = m::mock(FqsenResolver::class);
-        $tagFactory = new StandardTagFactory($resolver);
+        $tagFactory = StandardTagFactory::createInstance($resolver);
         $tagFactory->addService($service);
         $tagFactory->registerTagHandler('spy', CustomServiceClass::class);
 
@@ -336,7 +325,7 @@ class StandardTagFactoryTest extends TestCase
         $service       = new PassthroughFormatter();
 
         $resolver   = m::mock(FqsenResolver::class);
-        $tagFactory = new StandardTagFactory($resolver);
+        $tagFactory = StandardTagFactory::createInstance($resolver);
         $tagFactory->addService($service, $interfaceName);
         $tagFactory->registerTagHandler('spy', CustomServiceInterface::class);
 
@@ -356,7 +345,7 @@ class StandardTagFactoryTest extends TestCase
     public function testRegisteringAHandlerForANewTag(): void
     {
         $resolver   = m::mock(FqsenResolver::class);
-        $tagFactory = new StandardTagFactory($resolver);
+        $tagFactory = StandardTagFactory::createInstance($resolver);
 
         $tagFactory->registerTagHandler('my-tag', Author::class);
 
@@ -375,7 +364,7 @@ class StandardTagFactoryTest extends TestCase
     {
         $this->expectException('InvalidArgumentException');
         $resolver   = m::mock(FqsenResolver::class);
-        $tagFactory = new StandardTagFactory($resolver);
+        $tagFactory = StandardTagFactory::createInstance($resolver);
         // phpcs:ignore SlevomatCodingStandard.Namespaces.ReferenceUsedNamesOnly.ReferenceViaFullyQualifiedName
         $tagFactory->registerTagHandler(\Name\Spaced\Tag::class, Author::class);
     }
@@ -390,7 +379,7 @@ class StandardTagFactoryTest extends TestCase
     {
         $this->expectException('InvalidArgumentException');
         $resolver   = m::mock(FqsenResolver::class);
-        $tagFactory = new StandardTagFactory($resolver);
+        $tagFactory = StandardTagFactory::createInstance($resolver);
         $tagFactory->registerTagHandler('my-tag', '');
     }
 
@@ -404,7 +393,7 @@ class StandardTagFactoryTest extends TestCase
     {
         $this->expectException('InvalidArgumentException');
         $resolver   = m::mock(FqsenResolver::class);
-        $tagFactory = new StandardTagFactory($resolver);
+        $tagFactory = StandardTagFactory::createInstance($resolver);
         $tagFactory->registerTagHandler('my-tag', 'IDoNotExist');
     }
 
@@ -418,7 +407,7 @@ class StandardTagFactoryTest extends TestCase
     {
         $this->expectException('InvalidArgumentException');
         $resolver   = m::mock(FqsenResolver::class);
-        $tagFactory = new StandardTagFactory($resolver);
+        $tagFactory = StandardTagFactory::createInstance($resolver);
         $tagFactory->registerTagHandler('my-tag', 'stdClass');
     }
 
@@ -439,28 +428,19 @@ class StandardTagFactoryTest extends TestCase
         $descriptionFactory
             ->shouldReceive('create')
             ->once()
-            ->with('', $context)
+            ->with('mixed test', $context)
             ->andReturn(new Description(''));
 
         $typeResolver = new TypeResolver();
 
-        $tagFactory = new StandardTagFactory(m::mock(FqsenResolver::class));
+        $tagFactory = StandardTagFactory::createInstance(m::mock(FqsenResolver::class));
         $tagFactory->addService($descriptionFactory, DescriptionFactory::class);
         $tagFactory->addService($typeResolver, TypeResolver::class);
 
-        $tag = $tagFactory->create('@return mixed', $context);
+        $tag = $tagFactory->create('@deprecated mixed test', $context);
 
-        $this->assertInstanceOf(Return_::class, $tag);
-        $this->assertSame('return', $tag->getName());
-    }
-
-    public function testInvalidTagIsReturnedOnFailure(): void
-    {
-        $tagFactory = new StandardTagFactory(m::mock(FqsenResolver::class));
-
-        $tag = $tagFactory->create('@see $name some invalid tag');
-
-        $this->assertInstanceOf(InvalidTag::class, $tag);
+        $this->assertInstanceOf(Deprecated::class, $tag);
+        $this->assertSame('deprecated', $tag->getName());
     }
 
     /**
@@ -469,7 +449,7 @@ class StandardTagFactoryTest extends TestCase
     public function testValidFormattedTags(string $input, string $tagName, string $render): void
     {
         $fqsenResolver = m::mock(FqsenResolver::class);
-        $tagFactory = new StandardTagFactory($fqsenResolver);
+        $tagFactory = StandardTagFactory::createInstance($fqsenResolver);
         $tagFactory->registerTagHandler('tag', Generic::class);
         $tag = $tagFactory->create($input);
 
@@ -540,7 +520,7 @@ class StandardTagFactoryTest extends TestCase
     {
         $this->expectException(InvalidArgumentException::class);
         $fqsenResolver = m::mock(FqsenResolver::class);
-        $tagFactory = new StandardTagFactory($fqsenResolver);
+        $tagFactory = StandardTagFactory::createInstance($fqsenResolver);
         $tagFactory->registerTagHandler('tag', Generic::class);
         $tagFactory->create($input);
     }

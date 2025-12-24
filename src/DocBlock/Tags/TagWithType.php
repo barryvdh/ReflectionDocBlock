@@ -37,7 +37,7 @@ abstract class TagWithType extends BaseTag
         return $this->type;
     }
 
-    public static function create(string $body): Tag
+    final public static function create(string $body): Tag
     {
         throw new CannotCreateTag('Typed tag cannot be created');
     }

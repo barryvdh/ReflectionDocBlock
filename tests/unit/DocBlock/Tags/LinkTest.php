@@ -16,8 +16,7 @@ namespace phpDocumentor\Reflection\DocBlock\Tags;
 use Mockery as m;
 use phpDocumentor\Reflection\DocBlock\Description;
 use phpDocumentor\Reflection\DocBlock\DescriptionFactory;
-use phpDocumentor\Reflection\DocBlock\StandardTagFactory;
-use phpDocumentor\Reflection\FqsenResolver;
+use phpDocumentor\Reflection\DocBlock\TagFactory;
 use phpDocumentor\Reflection\Types\Context;
 use PHPUnit\Framework\TestCase;
 
@@ -177,9 +176,7 @@ class LinkTest extends TestCase
      */
     public function testFactoryMethodWithoutSpaceBeforeUrl(): void
     {
-        $fqsenResolver      = new FqsenResolver();
-        $tagFactory         = new StandardTagFactory($fqsenResolver);
-        $descriptionFactory = new DescriptionFactory($tagFactory);
+        $descriptionFactory = new DescriptionFactory($this->createMock(TagFactory::class));
         $context            = new Context('');
 
         $fixture = Link::create(
@@ -204,9 +201,7 @@ class LinkTest extends TestCase
      */
     public function testFactoryMethodWithSpaceBeforeUrl(): void
     {
-        $fqsenResolver      = new FqsenResolver();
-        $tagFactory         = new StandardTagFactory($fqsenResolver);
-        $descriptionFactory = new DescriptionFactory($tagFactory);
+        $descriptionFactory = new DescriptionFactory($this->createMock(TagFactory::class));
         $context            = new Context('');
 
         $fixture = Link::create(

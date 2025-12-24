@@ -16,7 +16,7 @@ namespace phpDocumentor\Reflection\DocBlock\Tags;
 use Mockery as m;
 use phpDocumentor\Reflection\DocBlock\Description;
 use phpDocumentor\Reflection\DocBlock\DescriptionFactory;
-use phpDocumentor\Reflection\DocBlock\StandardTagFactory;
+use phpDocumentor\Reflection\DocBlock\TagFactory;
 use phpDocumentor\Reflection\Fqsen;
 use phpDocumentor\Reflection\FqsenResolver;
 use phpDocumentor\Reflection\Types\Context;
@@ -188,8 +188,7 @@ class CoversTest extends TestCase
     public function testFactoryMethodWithSpaceBeforeClass(): void
     {
         $fqsenResolver      = new FqsenResolver();
-        $tagFactory         = new StandardTagFactory($fqsenResolver);
-        $descriptionFactory = new DescriptionFactory($tagFactory);
+        $descriptionFactory = new DescriptionFactory($this->createMock(TagFactory::class));
         $context            = new Context('');
 
         $fixture = Covers::create(
