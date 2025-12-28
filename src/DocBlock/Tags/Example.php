@@ -26,7 +26,7 @@ use function trim;
 /**
  * Reflection class for a {@}example tag in a Docblock.
  */
-final class Example implements Tag, Factory\StaticMethod
+final class Example implements Tag
 {
     /** @var string Path to a file to use as an example. May also be an absolute URI. */
     private string $filePath;

@@ -23,7 +23,7 @@ use function preg_match;
 /**
  * Reflection class for a {@}source tag in a Docblock.
  */
-final class Source extends BaseTag implements Factory\StaticMethod
+final class Source extends BaseTag
 {
     protected string $name = 'source';
 

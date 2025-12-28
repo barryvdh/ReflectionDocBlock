@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace phpDocumentor\Reflection\DocBlock\Tags\Factory;
 
-use Doctrine\Deprecations\Deprecation;
 use phpDocumentor\Reflection\DocBlock\DescriptionFactory;
 use phpDocumentor\Reflection\DocBlock\Tag;
 use phpDocumentor\Reflection\DocBlock\Tags\InvalidTag;
 use phpDocumentor\Reflection\DocBlock\Tags\Param;
+use phpDocumentor\Reflection\Exception\ParserException;
 use phpDocumentor\Reflection\TypeResolver;
 use phpDocumentor\Reflection\Types\Context;
 use PHPStan\PhpDocParser\Ast\PhpDoc\InvalidTagValueNode;
@@ -20,7 +20,6 @@ use PHPStan\PhpDocParser\Ast\Type\OffsetAccessTypeNode;
 use Webmozart\Assert\Assert;
 
 use function is_string;
-use function sprintf;
 use function trim;
 
 /**
@@ -42,16 +41,9 @@ final class ParamFactory implements PHPStanFactory
         $tagValue = $node->value;
 
         if ($tagValue instanceof InvalidTagValueNode) {
-            Deprecation::trigger(
-                'phpdocumentor/reflection-docblock',
-                'https://github.com/phpDocumentor/ReflectionDocBlock/issues/362',
-                sprintf(
-                    'Param tag value "%s" is invalid, falling back to legacy parsing. Please update your docblocks.',
-                    $tagValue->value
-                )
+            return InvalidTag::create($tagValue->value, 'param')->withError(
+                ParserException::from($tagValue->exception)
             );
-
-            return Param::create($tagValue->value, $this->typeResolver, $this->descriptionFactory, $context);
         }
 
         Assert::isInstanceOfAny(

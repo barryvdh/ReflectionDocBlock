@@ -26,6 +26,7 @@ use phpDocumentor\Reflection\DocBlock\Tags\Return_;
 use phpDocumentor\Reflection\DocBlock\Tags\See;
 use phpDocumentor\Reflection\DocBlock\Tags\Since;
 use phpDocumentor\Reflection\DocBlock\Tags\Template;
+use phpDocumentor\Reflection\Exception\ParserException;
 use phpDocumentor\Reflection\PseudoTypes\ConstExpression;
 use phpDocumentor\Reflection\Types\Array_;
 use phpDocumentor\Reflection\Types\Compound;
@@ -242,18 +243,26 @@ DOC;
         $factory = DocBlockFactory::createInstance();
         $docblock = $factory->create($docComment);
 
-        self::assertEquals(
-            [
-                InvalidTag::create(
-                    'array\Foo> $test',
-                    'param',
-                )->withError(
-                    new \InvalidArgumentException(
-                        'Could not find type in array\Foo> $test, please check for malformed notations')
-                ),
-            ],
-            $docblock->getTags()
-        );
+        $tags = $docblock->getTags();
+
+        self::assertCount(1, $docblock->getTags());
+        self::assertInstanceOf(InvalidTag::class, $tags[0]);
+        self::assertCount(1, $docblock->getTags());
+        self::assertSame('Failed to parse docblock: Unexpected token ">", expected variable at offset 16 on line 1', $tags[0]->getException()->getMessage());
+
+
+//        self::assertEquals(
+//            [
+//                InvalidTag::create(
+//                    'array\Foo> $test',
+//                    'param',
+//                )->withError(
+//                    new ParserException(
+//                        'Could not find type in array\Foo> $test, please check for malformed notations', 'aa', 1)
+//                ),
+//            ],
+//            $docblock->getTags()
+//        );
     }
 
     public function testConstantReferenceTypes(): void
@@ -335,7 +344,7 @@ DOC;
                     ),
                     new Param(
                         'args',
-                        new Compound([new Array_(new Mixed_()), new String_()]),
+                        new Compound([new Array_(), new String_()]),
                         false,
                         new Description(
                             '{' . "\n" .
@@ -356,7 +365,7 @@ DOC;
                         )
                     ),
                     new Return_(
-                        new Compound([new Array_(new Mixed_()), new Object_(new Fqsen('\WP_Error'))]),
+                        new Compound([new Array_(), new Object_(new Fqsen('\WP_Error'))]),
                         new Description('The result (also stored in `WP_Upgrader::$result`), or a WP_Error on failure.')
                     ),
                 ],
@@ -407,7 +416,7 @@ identifier has already been registered.',
                     new Since('6.5.0', new Description('')),
                     new Param(
                         'deps',
-                        new Array_(new Mixed_()),
+                        new Array_(),
                         false,
                         new Description("{
     Optional. List of dependencies.

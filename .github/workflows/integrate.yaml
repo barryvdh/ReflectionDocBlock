@@ -5,7 +5,7 @@ name: "Integrate"
 on: # yamllint disable-line rule:truthy
   push:
     branches:
-      - "5.x"
+      - "6.x"
   pull_request: null
   # Allow manually triggering the workflow.
   workflow_dispatch: null
@@ -15,19 +15,19 @@ jobs:
     name: "Code Coverage"
     uses: "phpDocumentor/.github/.github/workflows/code-coverage.yml@v0.9"
     with:
-      composer-root-version: "5.x-dev"
+      composer-root-version: "6.x-dev"
 
   coding-standards:
     name: "Coding Standards"
     uses: "phpDocumentor/.github/.github/workflows/coding-standards.yml@v0.9"
     with:
-      composer-root-version: "5.x-dev"
+      composer-root-version: "6.x-dev"
 
   dependency-analysis:
     name: "Dependency analysis"
     uses: "phpDocumentor/.github/.github/workflows/dependency-analysis.yml@v0.9"
     with:
-      composer-root-version: "5.x-dev"
+      composer-root-version: "6.x-dev"
 
   lint-root:
     name: "Lint root"
@@ -40,19 +40,19 @@ jobs:
     uses: "phpDocumentor/.github/.github/workflows/static-analysis.yml@v0.9"
     with:
       php-extensions: "none, ctype, dom, json, mbstring, phar, simplexml, tokenizer, xml, xmlwriter, fileinfo, pcntl, posix"
-      composer-root-version: "5.x-dev"
+      composer-root-version: "6.x-dev"
 
   unit-tests:
     name: "Unit test"
     uses: "phpDocumentor/.github/.github/workflows/continuous-integration.yml@v0.9"
     with:
-      composer-root-version: "5.x-dev"
+      composer-root-version: "6.x-dev"
       upcoming-releases: true
 
   integration-tests:
     name: "Integration test"
     uses: "phpDocumentor/.github/.github/workflows/continuous-integration.yml@v0.9"
     with:
-      composer-root-version: "5.x-dev"
+      composer-root-version: "6.x-dev"
       upcoming-releases: true
       test-suite: "integration"

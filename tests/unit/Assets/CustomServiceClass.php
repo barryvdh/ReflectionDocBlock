@@ -10,7 +10,7 @@ use phpDocumentor\Reflection\DocBlock\Tags\Formatter\PassthroughFormatter;
 use phpDocumentor\Reflection\FqsenResolver;
 use phpDocumentor\Reflection\DocBlock\Tags\Factory\StaticMethod;
 
-final class CustomServiceClass implements Tag, StaticMethod
+final class CustomServiceClass implements Tag
 {
     public $formatter;
 

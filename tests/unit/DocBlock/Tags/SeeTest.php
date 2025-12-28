@@ -16,7 +16,7 @@ namespace phpDocumentor\Reflection\DocBlock\Tags;
 use Mockery as m;
 use phpDocumentor\Reflection\DocBlock\Description;
 use phpDocumentor\Reflection\DocBlock\DescriptionFactory;
-use phpDocumentor\Reflection\DocBlock\StandardTagFactory;
+use phpDocumentor\Reflection\DocBlock\TagFactory;
 use phpDocumentor\Reflection\DocBlock\Tags\Reference\Fqsen as FqsenRef;
 use phpDocumentor\Reflection\DocBlock\Tags\Reference\Fqsen as TagsFqsen;
 use phpDocumentor\Reflection\DocBlock\Tags\Reference\Url as UrlRef;
@@ -266,8 +266,7 @@ class SeeTest extends TestCase
     public function testFactoryMethodWithoutUrl(): void
     {
         $fqsenResolver      = new FqsenResolver();
-        $tagFactory         = new StandardTagFactory($fqsenResolver);
-        $descriptionFactory = new DescriptionFactory($tagFactory);
+        $descriptionFactory = new DescriptionFactory($this->createMock(TagFactory::class));
         $context            = new Context('');
 
         $fixture = See::create(

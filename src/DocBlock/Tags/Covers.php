@@ -27,7 +27,7 @@ use function explode;
 /**
  * Reflection class for a @covers tag in a Docblock.
  */
-final class Covers extends BaseTag implements Factory\StaticMethod
+final class Covers extends BaseTag
 {
     protected string $name = 'covers';
 
