@@ -75,7 +75,7 @@ DOCBLOCK;
 
         $this->assertInstanceOf(Method::class, $phpdoc->getTags()[0]);
         $this->assertEquals($expectedType, $phpdoc->getTags()[0]->getReturnType());
-        $this->assertEquals($expectedType, $phpdoc->getTags()[0]->getParameters()[0]->getType());
+        $this->assertEquals($expectedType, current($phpdoc->getTags()[0]->getParameters())->getType());
     }
 
     /** @dataProvider invalidFormatsProvider */
