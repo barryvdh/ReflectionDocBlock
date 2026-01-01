@@ -20,6 +20,7 @@ use phpDocumentor\Reflection\Types\Context;
 
 class CustomTagFactory implements Factory
 {
+    /** @var CustomServiceClass|null */
     public $class;
 
     public function create(string $tagLine, ?Context $context = null, CustomServiceClass $class = null): Tag

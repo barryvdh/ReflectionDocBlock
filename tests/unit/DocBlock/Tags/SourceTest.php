@@ -227,6 +227,8 @@ class SourceTest extends TestCase
     public function testExceptionIsThrownIfLineCountIsNotIntegerOrNull(): void
     {
         $this->expectException('InvalidArgumentException');
+
+        //@phpstan-ignore argument.type
         new Source('1', []);
     }
 }

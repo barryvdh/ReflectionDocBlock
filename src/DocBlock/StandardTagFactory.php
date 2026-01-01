@@ -22,6 +22,7 @@ use phpDocumentor\Reflection\DocBlock\Tags\Factory\ExtendsFactory;
 use phpDocumentor\Reflection\DocBlock\Tags\Factory\Factory;
 use phpDocumentor\Reflection\DocBlock\Tags\Factory\ImplementsFactory;
 use phpDocumentor\Reflection\DocBlock\Tags\Factory\MethodFactory;
+use phpDocumentor\Reflection\DocBlock\Tags\Factory\MixinFactory;
 use phpDocumentor\Reflection\DocBlock\Tags\Factory\ParamFactory;
 use phpDocumentor\Reflection\DocBlock\Tags\Factory\PropertyFactory;
 use phpDocumentor\Reflection\DocBlock\Tags\Factory\PropertyReadFactory;
@@ -151,6 +152,7 @@ final class StandardTagFactory implements TagFactory
             new PropertyReadFactory($typeResolver, $descriptionFactory),
             new PropertyWriteFactory($typeResolver, $descriptionFactory),
             new MethodFactory($typeResolver, $descriptionFactory),
+            new MixinFactory($typeResolver, $descriptionFactory),
             new ImplementsFactory($typeResolver, $descriptionFactory),
             new ExtendsFactory($typeResolver, $descriptionFactory),
             new TemplateFactory($typeResolver, $descriptionFactory),

@@ -84,7 +84,7 @@ final class MethodParameter
             '$' . $this->getName() .
             (
                 $this->defaultValue !== self::NO_DEFAULT_VALUE ?
-                (new MethodParameterFactory())->format($this->defaultValue) :
+                    ' = ' . (new MethodParameterFactory())->format($this->defaultValue) :
                 ''
             );
     }

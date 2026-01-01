@@ -158,6 +158,7 @@ class SinceTest extends TestCase
 
         $fixture = Since::create('1.0 My Description', $descriptionFactory, $context);
 
+        self::assertInstanceOf(Since::class, $fixture);
         $this->assertSame('1.0 My Description', (string) $fixture);
         $this->assertSame($version, $fixture->getVersion());
         $this->assertSame($description, $fixture->getDescription());
@@ -178,6 +179,7 @@ class SinceTest extends TestCase
 
         $fixture = Since::create('', $descriptionFactory, new Context(''));
 
+        self::assertInstanceOf(Since::class, $fixture);
         $this->assertSame('', (string) $fixture);
         $this->assertSame(null, $fixture->getVersion());
         $this->assertSame(null, $fixture->getDescription());

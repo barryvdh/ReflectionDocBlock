@@ -13,7 +13,6 @@ declare(strict_types=1);
 
 namespace phpDocumentor\Reflection\DocBlock;
 
-use Exception;
 use Mockery as m;
 use phpDocumentor\Reflection\DocBlock\Tags\InvalidTag;
 use phpDocumentor\Reflection\DocBlock\Tags\Link as LinkTag;
@@ -216,7 +215,7 @@ DESCRIPTION;
         $tagFactory->shouldReceive('create')
             ->once()
             ->with('@see $name', $context)
-            ->andReturn(InvalidTag::create('$name', 'see', new Exception()));
+            ->andReturn(InvalidTag::create('$name', 'see'));
 
         $factory     = new DescriptionFactory($tagFactory);
         $description = $factory->create($contents, $context);

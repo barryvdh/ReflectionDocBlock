@@ -200,7 +200,7 @@ DOCBLOCK;
     }
 
     /**
-     * @return string[]
+     * @return array<int, array<int, string>>
      */
     public function provideSummaryAndDescriptions(): array
     {

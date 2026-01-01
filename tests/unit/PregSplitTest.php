@@ -41,8 +41,12 @@ final class PregSplitTest extends TestCase
     public function testPregSplitThrowsOnError(): void
     {
         //We need to disable the error handler for phpunit... because we expect some errors here
-        $this->errorHandler = set_error_handler(static function (): void {
-        }, E_WARNING);
+        $this->errorHandler = set_error_handler(
+            static function (int $i, string $s, string $s2, int $x, ?array $trace = null): bool {
+                return true;
+            },
+            E_WARNING
+        );
 
         $this->expectException(PcreException::class);
         Utils::pregSplit('~InvalidRegular)Expression~', 'some word');

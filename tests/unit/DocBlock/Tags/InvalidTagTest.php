@@ -10,6 +10,7 @@ use PHPUnit\Framework\TestCase;
 use Throwable;
 
 use function fopen;
+use function is_string;
 use function serialize;
 use function unserialize;
 
@@ -57,9 +58,12 @@ final class InvalidTagTest extends TestCase
             self::assertSame('name', $tag->getName());
             self::assertSame('@name Body', $tag->render());
             self::assertSame($parentException, $tag->getException());
+
+            self::assertSame($e, $tag->getException()->getPrevious());
             $trace = $tag->getException()->getPrevious()->getTrace();
 
             if (isset($trace[0]['args'])) { // Not set by default on 7.4
+                self::assertTrue(is_string($trace[0]['args'][0]));
                 self::assertStringStartsWith('(Closure at', $trace[0]['args'][0]);
                 self::assertStringContainsString(__FILE__, $trace[0]['args'][0]);
             }
@@ -70,7 +74,7 @@ final class InvalidTagTest extends TestCase
 
     private function throwExceptionFromClosureWithClosureArgument(): void
     {
-        $function = static function (): void {
+        $function = static function (?callable $foo = null): void {
             throw new InvalidArgumentException();
         };
 
@@ -87,9 +91,11 @@ final class InvalidTagTest extends TestCase
             self::assertSame('name', $tag->getName());
             self::assertSame('@name Body', $tag->render());
             self::assertSame($parentException, $tag->getException());
+            self::assertSame($e, $tag->getException()->getPrevious());
             $trace = $tag->getException()->getPrevious()->getTrace();
 
             if (isset($trace[0]['args'])) { // Not set by default on 7.4
+                self::assertTrue(is_string($trace[0]['args'][0]));
                 self::assertStringStartsWith(
                     'resource(stream)',
                     $trace[0]['args'][0]
@@ -102,7 +108,7 @@ final class InvalidTagTest extends TestCase
 
     private function throwExceptionWithResourceArgument(): void
     {
-        $function = static function (): void {
+        $function = static function ($file): void {
             throw new InvalidArgumentException();
         };
 

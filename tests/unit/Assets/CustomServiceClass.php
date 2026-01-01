@@ -7,11 +7,10 @@ namespace phpDocumentor\Reflection\Assets;
 use phpDocumentor\Reflection\DocBlock\Tag;
 use phpDocumentor\Reflection\DocBlock\Tags\Formatter;
 use phpDocumentor\Reflection\DocBlock\Tags\Formatter\PassthroughFormatter;
-use phpDocumentor\Reflection\FqsenResolver;
-use phpDocumentor\Reflection\DocBlock\Tags\Factory\StaticMethod;
 
 final class CustomServiceClass implements Tag
 {
+    /** @var Formatter|null */
     public $formatter;
 
     public function getName() : string
@@ -19,7 +18,7 @@ final class CustomServiceClass implements Tag
         return 'spy';
     }
 
-    public static function create($body, PassthroughFormatter $formatter = null)
+    public static function create(string $body, PassthroughFormatter $formatter = null)
     {
         $tag = new self();
         $tag->formatter = $formatter;
