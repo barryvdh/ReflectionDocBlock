@@ -56,7 +56,6 @@ final class MethodFactoryTest extends TagFactoryTestCase
                     true,
                     new Description(''),
                     false,
-                    []
                 ),
             ],
             [
@@ -68,7 +67,6 @@ final class MethodFactoryTest extends TagFactoryTestCase
                     false,
                     new Description(''),
                     false,
-                    []
                 ),
             ],
             [
@@ -80,82 +78,75 @@ final class MethodFactoryTest extends TagFactoryTestCase
                     false,
                     new Description(''),
                     false,
-                    []
                 ),
             ],
             [
                 '@method myMethod($a)',
                 new Method(
                     'myMethod',
-                    [],
+                    [new MethodParameter('a', new Mixed_())],
                     new Void_(),
                     false,
                     new Description(''),
                     false,
-                    [new MethodParameter('a', new Mixed_())]
                 ),
             ],
             [
                 '@method void setInteger(integer $integer)',
                 new Method(
                     'setInteger',
-                    [],
+                    [new MethodParameter('integer', new Integer())],
                     new Void_(),
                     false,
                     new Description(''),
                     false,
-                    [new MethodParameter('integer', new Integer())]
                 ),
             ],
             [
                 '@method myMethod($a = 1)',
                 new Method(
                     'myMethod',
-                    [],
+                    [new MethodParameter('a', new Mixed_(), false, false, '1')],
                     new Void_(),
                     false,
                     new Description(''),
                     false,
-                    [new MethodParameter('a', new Mixed_(), false, false, '1')]
                 ),
             ],
             [
                 '@method myMethod(int $a = 1)',
                 new Method(
                     'myMethod',
-                    [],
+                    [new MethodParameter('a', new Integer(), false, false, '1')],
                     new Void_(),
                     false,
                     new Description(''),
                     false,
-                    [new MethodParameter('a', new Integer(), false, false, '1')]
                 ),
             ],
             [
                 '@method myMethod(int ...$a)',
                 new Method(
                     'myMethod',
-                    [],
+                    [new MethodParameter('a', new Integer(), false, true)],
                     new Void_(),
                     false,
                     new Description(''),
                     false,
-                    [new MethodParameter('a', new Integer(), false, true)]
                 ),
             ],
             [
                 '@method myMethod(int &$a, string $b)',
                 new Method(
                     'myMethod',
-                    [],
+                    [
+                        new MethodParameter('a', new Integer(), true, false),
+                        new MethodParameter('b', new String_(), false, false),
+                    ],
                     new Void_(),
                     false,
                     new Description(''),
                     false,
-                    [
-                        new MethodParameter('a', new Integer(), true, false),
-                        new MethodParameter('b', new String_(), false, false),
-                    ]
                 ),
             ],
         ];

@@ -217,14 +217,13 @@ DOC;
             [
                 new Method(
                     'setInteger',
-                    [],
+                    [
+                        new MethodParameter('integer', new Integer())
+                    ],
                     new Void_(),
                     false,
                     new Description(''),
                     false,
-                    [
-                        new MethodParameter('integer', new Integer())
-                    ]
                 ),
             ],
             $docblock->getTags()
