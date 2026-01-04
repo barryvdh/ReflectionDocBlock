@@ -1,0 +1,21 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Unused phpDocumentor\\\\Reflection\\\\DocBlock\\\\ExampleFinder\\:\\:getExampleDirectories$#"
+			count: 1
+			path: src/DocBlock/ExampleFinder.php
+
+		-
+			message: "#^Unused phpDocumentor\\\\Reflection\\\\DocBlock\\\\ExampleFinder\\:\\:setExampleDirectories$#"
+			count: 1
+			path: src/DocBlock/ExampleFinder.php
+
+		-
+			message: "#^Unused phpDocumentor\\\\Reflection\\\\DocBlock\\\\ExampleFinder\\:\\:setSourceDirectory$#"
+			count: 1
+			path: src/DocBlock/ExampleFinder.php
+
+		-
+			message: "#^Unused phpDocumentor\\\\Reflection\\\\DocBlock\\\\Tags\\\\Factory\\\\MethodParameterFactory\\:\\:formatNull$#"
+			count: 1
+			path: src/DocBlock/Tags/Factory/MethodParameterFactory.php
