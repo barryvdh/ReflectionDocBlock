@@ -33,7 +33,7 @@ abstract class TagFactoryTestCase extends TestCase
 {
     public function parseTag(string $tag): PhpDocTagNode
     {
-        $config = new ParserConfig([]);
+        $config = new ParserConfig(['indexes' => true, 'lines' => true]);
         $lexer = new Lexer($config);
         $constParser = new ConstExprParser($config);
         $phpDocParser = new PhpDocParser($config, new TypeParser($config, $constParser), $constParser);
