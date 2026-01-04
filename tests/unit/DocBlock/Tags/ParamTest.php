@@ -153,4 +153,19 @@ class ParamTest extends TestCase
 
         $this->assertSame('string ...$myParameter Description', (string) $fixture);
     }
+
+    /**
+     * @uses   \phpDocumentor\Reflection\DocBlock\Description
+     *
+     * @covers ::__construct
+     * @covers \phpDocumentor\Reflection\DocBlock\Tags\Param::isReference
+     */
+    public function testIsReference(): void
+    {
+        $expected = new Description('Description');
+
+        $fixture = new Param('1.0', null, false, $expected);
+
+        $this->assertFalse($fixture->isReference());
+    }
 }
