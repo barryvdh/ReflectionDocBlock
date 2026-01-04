@@ -226,6 +226,19 @@ class MethodTest extends TestCase
     }
 
     /**
+     * @covers ::__construct
+     * @covers ::getReturnType
+     */
+    public function testReturnsReference(): void
+    {
+        $expected = new String_();
+
+        $fixture = new Method('myMethod', [], $expected);
+
+        $this->assertFalse($fixture->returnsReference());
+    }
+
+    /**
      * @covers ::create
      */
     public function testFactoryMethodThrows(): void

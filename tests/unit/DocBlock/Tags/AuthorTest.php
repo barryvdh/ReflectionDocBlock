@@ -82,6 +82,7 @@ class AuthorTest extends TestCase
 
         $fixture = new Author($expected, 'mike@phpdoc.org');
 
+        self::assertInstanceOf(Author::class, $fixture);
         $this->assertSame($expected, $fixture->getAuthorName());
     }
 
@@ -95,6 +96,7 @@ class AuthorTest extends TestCase
 
         $fixture = new Author('Mike van Riel', $expected);
 
+        self::assertInstanceOf(Author::class, $fixture);
         $this->assertSame($expected, $fixture->getEmail());
     }
 
@@ -156,6 +158,7 @@ class AuthorTest extends TestCase
     {
         $fixture = Author::create($input);
 
+        self::assertInstanceOf(Author::class, $fixture);
         $this->assertSame($output, (string) $fixture);
         $this->assertSame($name, $fixture->getAuthorName());
         $this->assertSame($email, $fixture->getEmail());

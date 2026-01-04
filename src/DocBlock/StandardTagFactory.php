@@ -22,14 +22,14 @@ use phpDocumentor\Reflection\DocBlock\Tags\Factory\ExtendsFactory;
 use phpDocumentor\Reflection\DocBlock\Tags\Factory\Factory;
 use phpDocumentor\Reflection\DocBlock\Tags\Factory\ImplementsFactory;
 use phpDocumentor\Reflection\DocBlock\Tags\Factory\MethodFactory;
+use phpDocumentor\Reflection\DocBlock\Tags\Factory\MixinFactory;
 use phpDocumentor\Reflection\DocBlock\Tags\Factory\ParamFactory;
 use phpDocumentor\Reflection\DocBlock\Tags\Factory\PropertyFactory;
 use phpDocumentor\Reflection\DocBlock\Tags\Factory\PropertyReadFactory;
 use phpDocumentor\Reflection\DocBlock\Tags\Factory\PropertyWriteFactory;
 use phpDocumentor\Reflection\DocBlock\Tags\Factory\ReturnFactory;
-use phpDocumentor\Reflection\DocBlock\Tags\Factory\TemplateExtendsFactory;
+use phpDocumentor\Reflection\DocBlock\Tags\Factory\TemplateCovariantFactory;
 use phpDocumentor\Reflection\DocBlock\Tags\Factory\TemplateFactory;
-use phpDocumentor\Reflection\DocBlock\Tags\Factory\TemplateImplementsFactory;
 use phpDocumentor\Reflection\DocBlock\Tags\Factory\ThrowsFactory;
 use phpDocumentor\Reflection\DocBlock\Tags\Factory\VarFactory;
 use phpDocumentor\Reflection\DocBlock\Tags\Generic;
@@ -151,11 +151,11 @@ final class StandardTagFactory implements TagFactory
             new PropertyReadFactory($typeResolver, $descriptionFactory),
             new PropertyWriteFactory($typeResolver, $descriptionFactory),
             new MethodFactory($typeResolver, $descriptionFactory),
+            new MixinFactory($typeResolver, $descriptionFactory),
             new ImplementsFactory($typeResolver, $descriptionFactory),
             new ExtendsFactory($typeResolver, $descriptionFactory),
             new TemplateFactory($typeResolver, $descriptionFactory),
-            new TemplateImplementsFactory($typeResolver, $descriptionFactory),
-            new TemplateExtendsFactory($typeResolver, $descriptionFactory),
+            new TemplateCovariantFactory($typeResolver, $descriptionFactory),
             new ThrowsFactory($typeResolver, $descriptionFactory),
         );
 

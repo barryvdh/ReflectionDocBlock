@@ -48,7 +48,7 @@ final class ParamFactoryTest extends TagFactoryTestCase
     }
 
     /**
-     * @return array<array-key, string|Param>
+     * @return array<int, array<int, string|Param|InvalidTag>>
      */
     public function paramInputProvider(): array
     {

@@ -158,6 +158,7 @@ class VersionTest extends TestCase
 
         $fixture = Version::create('1.0 My Description', $descriptionFactory, $context);
 
+        self::assertInstanceOf(Version::class, $fixture);
         $this->assertSame('1.0 My Description', (string) $fixture);
         $this->assertSame($version, $fixture->getVersion());
         $this->assertSame($description, $fixture->getDescription());
@@ -178,6 +179,7 @@ class VersionTest extends TestCase
 
         $fixture = Version::create('', $descriptionFactory, new Context(''));
 
+        self::assertInstanceOf(Version::class, $fixture);
         $this->assertSame('', (string) $fixture);
         $this->assertSame(null, $fixture->getVersion());
         $this->assertSame(null, $fixture->getDescription());

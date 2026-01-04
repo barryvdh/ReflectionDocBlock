@@ -108,8 +108,9 @@ class DocBlockTest extends TestCase
     public function testDocBlockAllowsOnlyTags(): void
     {
         $this->expectException('InvalidArgumentException');
-        $tags    = [null];
-        $fixture = new DocBlock('', null, $tags);
+        $tags = [null];
+        // @phpstan-ignore argument.type
+        new DocBlock('', null, $tags);
     }
 
     /**

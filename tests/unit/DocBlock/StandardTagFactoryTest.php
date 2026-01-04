@@ -15,6 +15,7 @@ namespace phpDocumentor\Reflection\DocBlock;
 
 use InvalidArgumentException;
 use Mockery as m;
+use Name\Spaced\Tag;
 use phpDocumentor\Reflection\Assets\CustomParam;
 use phpDocumentor\Reflection\Assets\CustomServiceClass;
 use phpDocumentor\Reflection\Assets\CustomServiceInterface;
@@ -134,10 +135,10 @@ class StandardTagFactoryTest extends TestCase
     public function testAnEmptyContextIsCreatedIfNoneIsProvided(): void
     {
         $fqsen              = '\Tag';
-        $resolver           = m::mock(FqsenResolver::class)
-            ->shouldReceive('resolve')
+        $resolver           = m::mock(FqsenResolver::class);
+        $resolver->allows('resolve')
             ->with('Tag', m::type(Context::class))
-            ->andReturn(new Fqsen($fqsen))
+            ->andReturns(new Fqsen($fqsen))
             ->getMock();
         $descriptionFactory = m::mock(DescriptionFactory::class);
         $descriptionFactory->shouldIgnoreMissing();
@@ -246,18 +247,14 @@ class StandardTagFactoryTest extends TestCase
             'The tag "@my-täg " does not seem to be wellformed, please check it for errors'
         );
 
-        $typeResolver       = new TypeResolver();
         $fqsenResolver      = new FqsenResolver();
-        $tagFactory         = StandardTagFactory::createInstance($fqsenResolver);
-        $descriptionFactory = new DescriptionFactory($tagFactory);
         $context            = new Context('');
 
         $tagFactory = StandardTagFactory::createInstance(
             $fqsenResolver,
-            ['my-täg' => Author::class]
         );
 
-        $tag = $tagFactory->create('@my-täg ', $context);
+        $tagFactory->create('@my-täg ', $context);
     }
 
     /**
@@ -291,6 +288,7 @@ class StandardTagFactoryTest extends TestCase
         $tagFactory->addParameter('myParam', 'myValue');
         $spy = $tagFactory->create('@spy');
 
+        self::assertInstanceOf(CustomParam::class, $spy);
         $this->assertSame($resolver, $spy->fqsenResolver);
         $this->assertSame('myValue', $spy->myParam);
     }
@@ -311,6 +309,7 @@ class StandardTagFactoryTest extends TestCase
 
         $spy = $tagFactory->create('@spy');
 
+        self::assertInstanceOf(CustomServiceClass::class, $spy);
         $this->assertSame($service, $spy->formatter);
     }
 
@@ -331,6 +330,7 @@ class StandardTagFactoryTest extends TestCase
 
         $spy = $tagFactory->create('@spy');
 
+        self::assertInstanceOf(CustomServiceInterface::class, $spy);
         $this->assertSame($service, $spy->formatter);
     }
 
@@ -366,7 +366,10 @@ class StandardTagFactoryTest extends TestCase
         $resolver   = m::mock(FqsenResolver::class);
         $tagFactory = StandardTagFactory::createInstance($resolver);
         // phpcs:ignore SlevomatCodingStandard.Namespaces.ReferenceUsedNamesOnly.ReferenceViaFullyQualifiedName
-        $tagFactory->registerTagHandler(\Name\Spaced\Tag::class, Author::class);
+        $tagFactory->registerTagHandler(
+            Tag::class, // @phpstan-ignore class.notFound
+            Author::class
+        );
     }
 
     /**
@@ -380,6 +383,7 @@ class StandardTagFactoryTest extends TestCase
         $this->expectException('InvalidArgumentException');
         $resolver   = m::mock(FqsenResolver::class);
         $tagFactory = StandardTagFactory::createInstance($resolver);
+        //@phpstan-ignore argument.type
         $tagFactory->registerTagHandler('my-tag', '');
     }
 
@@ -394,6 +398,8 @@ class StandardTagFactoryTest extends TestCase
         $this->expectException('InvalidArgumentException');
         $resolver   = m::mock(FqsenResolver::class);
         $tagFactory = StandardTagFactory::createInstance($resolver);
+
+        //@phpstan-ignore argument.type
         $tagFactory->registerTagHandler('my-tag', 'IDoNotExist');
     }
 
@@ -408,6 +414,8 @@ class StandardTagFactoryTest extends TestCase
         $this->expectException('InvalidArgumentException');
         $resolver   = m::mock(FqsenResolver::class);
         $tagFactory = StandardTagFactory::createInstance($resolver);
+
+        //@phpstan-ignore argument.type
         $tagFactory->registerTagHandler('my-tag', 'stdClass');
     }
 

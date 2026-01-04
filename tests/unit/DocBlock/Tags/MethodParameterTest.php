@@ -81,6 +81,10 @@ class MethodParameterTest extends TestCase
             sprintf('%s $argument = %s', $type, $defaultValueStr),
             (string) $fixture
         );
+        $this->assertSame(
+            $defaultValueStr,
+            $fixture->getDefaultValue()
+        );
     }
 
     /**

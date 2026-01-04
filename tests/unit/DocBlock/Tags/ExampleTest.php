@@ -23,6 +23,7 @@ class ExampleTest extends TestCase
     public function testExampleWithoutContent(): void
     {
         $tag = Example::create('"example1.php"');
+        self::assertInstanceOf(Example::class, $tag);
         $this->assertEquals('"example1.php"', $tag->getContent());
         $this->assertEquals('', $tag->getDescription());
         $this->assertEquals('example', $tag->getName());
@@ -39,6 +40,7 @@ class ExampleTest extends TestCase
     public function testWithDescription(): void
     {
         $tag = Example::create('"example1.php" some text');
+        self::assertInstanceOf(Example::class, $tag);
         $this->assertEquals('example1.php', $tag->getFilePath());
         $this->assertEquals('some text', $tag->getDescription());
     }
@@ -54,6 +56,7 @@ class ExampleTest extends TestCase
     public function testStartlineIsParsed(): void
     {
         $tag = Example::create('"example1.php" 10');
+        self::assertInstanceOf(Example::class, $tag);
         $this->assertEquals('example1.php', $tag->getFilePath());
         $this->assertEquals(10, $tag->getStartingLine());
     }
@@ -70,6 +73,7 @@ class ExampleTest extends TestCase
     public function testAllowOmittingLineCount(): void
     {
         $tag = Example::create('"example1.php" 10 some text');
+        self::assertInstanceOf(Example::class, $tag);
         $this->assertEquals('example1.php', $tag->getFilePath());
         $this->assertEquals(10, $tag->getStartingLine());
         $this->assertEquals('some text', $tag->getDescription());
@@ -87,6 +91,7 @@ class ExampleTest extends TestCase
     public function testLengthIsParsed(): void
     {
         $tag = Example::create('"example1.php" 10 5');
+        self::assertInstanceOf(Example::class, $tag);
         $this->assertEquals('example1.php', $tag->getFilePath());
         $this->assertEquals(10, $tag->getStartingLine());
         $this->assertEquals(5, $tag->getLineCount());
@@ -159,6 +164,7 @@ class ExampleTest extends TestCase
         string $content
     ): void {
         $tag = Example::create($input);
+        self::assertInstanceOf(Example::class, $tag);
         $this->assertSame($filePath, $tag->getFilePath());
         $this->assertSame($startLine, $tag->getStartingLine());
         $this->assertSame($lineCount, $tag->getLineCount());
