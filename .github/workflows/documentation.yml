@@ -15,4 +15,5 @@ jobs:
     with:
       deploy: true
       component: "reflection-docblock"
+    secrets:
       token: "${{ secrets.BOT_TOKEN }}"
