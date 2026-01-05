@@ -3,7 +3,7 @@
  * In this example we demonstrate how you can add your own Tag using a Static Factory method in your Tag class.
  */
 
-require_once(__DIR__ . '/../vendor/autoload.php');
+require_once(__DIR__ . '/../../vendor/autoload.php');
 
 use phpDocumentor\Reflection\DocBlock\Serializer;
 use phpDocumentor\Reflection\DocBlock\Tag;
