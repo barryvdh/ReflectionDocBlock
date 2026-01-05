@@ -1,0 +1,17 @@
+# https://docs.github.com/en/actions
+
+name: "Documentation"
+
+on: # yamllint disable-line rule:truthy
+  push:
+    branches:
+      - "6.x"
+  workflow_dispatch: null
+
+jobs:
+  run:
+    name: "Documentation"
+    uses: "phpDocumentor/.github/.github/workflows/documentation.yml@main"
+    with:
+      deploy: true
+      component: "reflection-docblock"
