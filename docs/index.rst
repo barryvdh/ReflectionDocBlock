@@ -34,7 +34,7 @@ For more detailed usage and how-to guides, see the ``examples/`` directory.
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :hidden:
 
    installation
    how-to/index

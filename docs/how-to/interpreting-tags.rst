@@ -1,4 +1,4 @@
-How to Interpret Tags in a DocBlock
+Interpret Tags in a DocBlock
 ===================================
 
 This guide demonstrates how to interpret tags within a DocBlock using ReflectionDocBlock.

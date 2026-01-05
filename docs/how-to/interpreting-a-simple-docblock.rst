@@ -1,4 +1,4 @@
-How to Interpret a Simple DocBlock
+Interpret a Simple DocBlock
 ==================================
 
 This guide demonstrates how to parse a simple DocBlock and extract its summary and description using ReflectionDocBlock.

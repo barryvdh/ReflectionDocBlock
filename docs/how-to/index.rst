@@ -1,4 +1,4 @@
-How-to Guides
+How-to
 =============
 
 Practical guides for common tasks with ReflectionDocBlock:
