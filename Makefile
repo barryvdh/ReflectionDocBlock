@@ -41,3 +41,7 @@ rector: ## Refactor code using rector
 
 .PHONY: pre-commit-test
 pre-commit-test: fix-code-style test code-style static-code-analysis
+
+.PHONY: docs
+docs: ## Generate documentation with phpDocumentor
+	docker run -it --rm -v${PWD}:/opt/project -w /opt/project phpdoc/phpdoc:3

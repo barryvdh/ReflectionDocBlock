@@ -39,7 +39,7 @@ class ReconstitutingADocBlockTest extends TestCase
         /** @var string $reconstitutedDocComment */
         $reconstitutedDocComment;
 
-        include(__DIR__ . '/../../examples/03-reconstituting-a-docblock.php');
+        include(__DIR__ . '/../../docs/examples/03-reconstituting-a-docblock.php');
 
         $this->assertSame($docComment, $reconstitutedDocComment);
     }

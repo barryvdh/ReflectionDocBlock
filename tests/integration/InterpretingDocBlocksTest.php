@@ -86,7 +86,7 @@ DOCBLOCK;
         /** @var Description $description */
         $description;
 
-        include(__DIR__ . '/../../examples/01-interpreting-a-simple-docblock.php');
+        include(__DIR__ . '/../../docs/examples/01-interpreting-a-simple-docblock.php');
 
         $descriptionText = <<<DESCRIPTION
 This is a Description. A Summary and Description are separated by either
@@ -120,7 +120,7 @@ DESCRIPTION;
         /** @var See[] $seeTags */
         $seeTags;
 
-        include(__DIR__ . '/../../examples/02-interpreting-tags.php');
+        include(__DIR__ . '/../../docs/examples/02-interpreting-tags.php');
 
         $this->assertTrue($hasSeeTag);
         $this->assertCount(1, $tags);
@@ -147,7 +147,7 @@ DESCRIPTION;
         /** @var string $foundDescription */
         $foundDescription;
 
-        include(__DIR__ . '/../../examples/playing-with-descriptions/02-escaping.php');
+        include(__DIR__ . '/../../docs/examples/playing-with-descriptions/02-escaping.php');
 
         $this->assertSame(
             str_replace(
