@@ -21,16 +21,11 @@ Quick Start Example
 -------------------
 Here's a minimal example of how to use ReflectionDocBlock in your project:
 
-.. code-block:: php
-   <?php
-   use phpDocumentor\Reflection\DocBlockFactory;
+.. literalinclude:: examples/01-interpreting-a-simple-docblock.php
+   :language: php
+   :caption: examples/01-interpreting-a-simple-docblock.php
 
-   $factory  = DocBlockFactory::createInstance();
-   $docblock = $factory->create('/**\n * This is a summary.\n *\n * This is a description.\n */');
-
-   echo $docblock->getSummary(); // Outputs: This is a summary.
-
-For more detailed usage and how-to guides, see the ``examples/`` directory.
+For more detailed usage and how-to guides, see the ``how-to/`` section.
 
 .. toctree::
    :maxdepth: 2
@@ -38,5 +33,5 @@ For more detailed usage and how-to guides, see the ``examples/`` directory.
 
    installation
    how-to/index
-   migration-v6
+   upgrade-to-v6
    contributing
