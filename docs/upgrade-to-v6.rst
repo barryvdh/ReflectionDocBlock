@@ -10,36 +10,36 @@ Supported PHP Versions
 Breaking Changes & Removals
 ---------------------------
 - **Removal of `::create` static method for type-based tags**
-  - The `create` static method has been removed from tag classes that represent type definitions, such as `@param` and `@return` tags. Most users will not be affected, as these methods are rarely used directly. The deprecation notice for these methods was present throughout v5.
-  - **Migration:**
-    - If you are instantiating these tag objects directly, use the tag factory or the recommended construction pattern instead.
-    - Before:
-      .. code-block:: php
+    - The `create` static method has been removed from tag classes that represent type definitions, such as `@param` and `@return` tags. Most users will not be affected, as these methods are rarely used directly. The deprecation notice for these methods was present throughout v5.
+    - **Migration:**
+        - If you are instantiating these tag objects directly, use the tag factory or the recommended construction pattern instead.
+        - Before:
+            .. code-block:: php
 
-         $tag = Param::create($body);
-    - After:
-      .. code-block:: php
+               $tag = Param::create($body);
+        - After:
+            .. code-block:: php
 
-         $factory = \phpDocumentor\Reflection\DocBlock\Tags\Factory\StandardTagFactory::createInstance();
-         $tag = $factory->create('@param int $foo');
+               $factory = \phpDocumentor\Reflection\DocBlock\Tags\Factory\StandardTagFactory::createInstance();
+               $tag = $factory->create('@param int $foo');
 
 - **StandardTagFactory instantiation**
-  - `StandardTagFactory` must now be created via `createInstance()`.
-  - **Migration:**
-    - Before:
-      .. code-block:: php
+    - `StandardTagFactory` must now be created via `createInstance()`.
+    - **Migration:**
+        - Before:
+            .. code-block:: php
 
-         $factory = new StandardTagFactory();
-    - After:
-      .. code-block:: php
+               $factory = new StandardTagFactory();
+        - After:
+            .. code-block:: php
 
-         $factory = StandardTagFactory::createInstance();
+               $factory = StandardTagFactory::createInstance();
 
 - **Removed methods**
-  - `Method::getArguments` has been removed.
-  - `Method::create` has been removed.
-  - **Migration:**
-    - Refactor code to use the new API for method arguments and creation.
+    - `Method::getArguments` has been removed.
+    - `Method::create` has been removed.
+    - **Migration:**
+        - Refactor code to use the new API for method arguments and creation.
 
 TypeResolver Upgrade
 -------------------
