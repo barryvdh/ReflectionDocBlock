@@ -556,9 +556,9 @@ class StandardTagFactoryTest extends TestCase
     }
 
     /**
-     * @dataProvider provideCreateWithTagWithTypesData
-     *
      * @param class-string $expectedClass
+     * 
+     * @dataProvider provideCreateWithTagWithTypesData
      */
     public function testCreateWithTagWithTypes(string $input, string $expectedClass): void
     {
