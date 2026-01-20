@@ -35,12 +35,9 @@ use phpDocumentor\Reflection\DocBlock\Tags\Factory\VarFactory;
 use phpDocumentor\Reflection\DocBlock\Tags\Generic;
 use phpDocumentor\Reflection\DocBlock\Tags\InvalidTag;
 use phpDocumentor\Reflection\DocBlock\Tags\Link as LinkTag;
-use phpDocumentor\Reflection\DocBlock\Tags\Method;
 use phpDocumentor\Reflection\DocBlock\Tags\See as SeeTag;
 use phpDocumentor\Reflection\DocBlock\Tags\Since;
 use phpDocumentor\Reflection\DocBlock\Tags\Source;
-use phpDocumentor\Reflection\DocBlock\Tags\TemplateCovariant;
-use phpDocumentor\Reflection\DocBlock\Tags\Throws;
 use phpDocumentor\Reflection\DocBlock\Tags\Uses;
 use phpDocumentor\Reflection\DocBlock\Tags\Version;
 use phpDocumentor\Reflection\FqsenResolver;
@@ -92,14 +89,10 @@ final class StandardTagFactory implements TagFactory
         'author'             => Author::class,
         'covers'             => Covers::class,
         'deprecated'         => Deprecated::class,
-        // 'example'         => '\phpDocumentor\Reflection\DocBlock\Tags\Example',
         'link'               => LinkTag::class,
-        'method'             => Method::class,
         'see'                => SeeTag::class,
         'since'              => Since::class,
         'source'             => Source::class,
-        'template-covariant' => TemplateCovariant::class,
-        'throw'              => Throws::class,
         'uses'               => Uses::class,
         'version'            => Version::class,
     ];
@@ -172,6 +165,7 @@ final class StandardTagFactory implements TagFactory
         $tagFactory->registerTagHandler('extends', $phpstanTagFactory);
         $tagFactory->registerTagHandler('implements', $phpstanTagFactory);
         $tagFactory->registerTagHandler('template', $phpstanTagFactory);
+        $tagFactory->registerTagHandler('template-covariant', $phpstanTagFactory);
         $tagFactory->registerTagHandler('template-extends', $phpstanTagFactory);
         $tagFactory->registerTagHandler('template-implements', $phpstanTagFactory);
         $tagFactory->registerTagHandler('throws', $phpstanTagFactory);
