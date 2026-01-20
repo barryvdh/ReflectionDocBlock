@@ -168,6 +168,7 @@ final class StandardTagFactory implements TagFactory
         $tagFactory->registerTagHandler('property-read', $phpstanTagFactory);
         $tagFactory->registerTagHandler('property-write', $phpstanTagFactory);
         $tagFactory->registerTagHandler('method', $phpstanTagFactory);
+        $tagFactory->registerTagHandler('mixin', $phpstanTagFactory);
         $tagFactory->registerTagHandler('extends', $phpstanTagFactory);
         $tagFactory->registerTagHandler('implements', $phpstanTagFactory);
         $tagFactory->registerTagHandler('template', $phpstanTagFactory);
