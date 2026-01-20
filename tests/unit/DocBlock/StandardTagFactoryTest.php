@@ -37,8 +37,6 @@ use phpDocumentor\Reflection\DocBlock\Tags\Return_;
 use phpDocumentor\Reflection\DocBlock\Tags\See;
 use phpDocumentor\Reflection\DocBlock\Tags\Template;
 use phpDocumentor\Reflection\DocBlock\Tags\TemplateCovariant;
-use phpDocumentor\Reflection\DocBlock\Tags\TemplateExtends;
-use phpDocumentor\Reflection\DocBlock\Tags\TemplateImplements;
 use phpDocumentor\Reflection\DocBlock\Tags\Throws;
 use phpDocumentor\Reflection\DocBlock\Tags\Var_;
 use phpDocumentor\Reflection\Fqsen;
