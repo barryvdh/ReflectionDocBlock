@@ -33,7 +33,6 @@ use phpDocumentor\Reflection\DocBlock\Tags\PropertyRead;
 use phpDocumentor\Reflection\DocBlock\Tags\PropertyWrite;
 use phpDocumentor\Reflection\DocBlock\Tags\Return_;
 use phpDocumentor\Reflection\DocBlock\Tags\See;
-use phpDocumentor\Reflection\DocBlock\Tags\TagWithType;
 use phpDocumentor\Reflection\DocBlock\Tags\TemplateCovariant;
 use phpDocumentor\Reflection\DocBlock\Tags\Throws;
 use phpDocumentor\Reflection\DocBlock\Tags\Var_;
@@ -558,7 +557,7 @@ class StandardTagFactoryTest extends TestCase
 
     /**
      * @dataProvider provideCreateWithTagWithTypesData
-     * 
+     *
      * @param class-string $expectedClass
      */
     public function testCreateWithTagWithTypes(string $input, string $expectedClass): void
