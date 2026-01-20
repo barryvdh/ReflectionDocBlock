@@ -92,14 +92,10 @@ final class StandardTagFactory implements TagFactory
         'author'             => Author::class,
         'covers'             => Covers::class,
         'deprecated'         => Deprecated::class,
-        // 'example'         => '\phpDocumentor\Reflection\DocBlock\Tags\Example',
         'link'               => LinkTag::class,
-        'method'             => Method::class,
         'see'                => SeeTag::class,
         'since'              => Since::class,
         'source'             => Source::class,
-        'template-covariant' => TemplateCovariant::class,
-        'throw'              => Throws::class,
         'uses'               => Uses::class,
         'version'            => Version::class,
     ];
@@ -161,6 +157,7 @@ final class StandardTagFactory implements TagFactory
 
         $tagFactory->addService($descriptionFactory);
         $tagFactory->addService($typeResolver);
+        $tagFactory->registerTagHandler('mixin', $phpstanTagFactory);
         $tagFactory->registerTagHandler('param', $phpstanTagFactory);
         $tagFactory->registerTagHandler('var', $phpstanTagFactory);
         $tagFactory->registerTagHandler('return', $phpstanTagFactory);
@@ -171,6 +168,7 @@ final class StandardTagFactory implements TagFactory
         $tagFactory->registerTagHandler('extends', $phpstanTagFactory);
         $tagFactory->registerTagHandler('implements', $phpstanTagFactory);
         $tagFactory->registerTagHandler('template', $phpstanTagFactory);
+        $tagFactory->registerTagHandler('template-covariant', $phpstanTagFactory);
         $tagFactory->registerTagHandler('template-extends', $phpstanTagFactory);
         $tagFactory->registerTagHandler('template-implements', $phpstanTagFactory);
         $tagFactory->registerTagHandler('throws', $phpstanTagFactory);

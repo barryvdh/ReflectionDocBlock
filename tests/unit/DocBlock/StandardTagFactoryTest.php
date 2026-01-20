@@ -25,7 +25,18 @@ use phpDocumentor\Reflection\DocBlock\Tags\Deprecated;
 use phpDocumentor\Reflection\DocBlock\Tags\Formatter;
 use phpDocumentor\Reflection\DocBlock\Tags\Formatter\PassthroughFormatter;
 use phpDocumentor\Reflection\DocBlock\Tags\Generic;
+use phpDocumentor\Reflection\DocBlock\Tags\Method;
+use phpDocumentor\Reflection\DocBlock\Tags\Mixin;
+use phpDocumentor\Reflection\DocBlock\Tags\Param;
+use phpDocumentor\Reflection\DocBlock\Tags\Property;
+use phpDocumentor\Reflection\DocBlock\Tags\PropertyRead;
+use phpDocumentor\Reflection\DocBlock\Tags\PropertyWrite;
+use phpDocumentor\Reflection\DocBlock\Tags\Return_;
 use phpDocumentor\Reflection\DocBlock\Tags\See;
+use phpDocumentor\Reflection\DocBlock\Tags\TagWithType;
+use phpDocumentor\Reflection\DocBlock\Tags\TemplateCovariant;
+use phpDocumentor\Reflection\DocBlock\Tags\Throws;
+use phpDocumentor\Reflection\DocBlock\Tags\Var_;
 use phpDocumentor\Reflection\Fqsen;
 use phpDocumentor\Reflection\FqsenResolver;
 use phpDocumentor\Reflection\TypeResolver;
@@ -542,6 +553,38 @@ class StandardTagFactoryTest extends TestCase
         return [
             ['@tag[invalid]'],
             ['@tag@invalid'],
+        ];
+    }
+
+    /**
+     * @dataProvider provideCreateWithTagWithTypesData
+     * 
+     * @param class-string $expectedClass
+     */
+    public function testCreateWithTagWithTypes(string $input, string $expectedClass): void
+    {
+        $tagFactory = StandardTagFactory::createInstance(new FqsenResolver());
+        $tag = $tagFactory->create($input);
+
+        $this->assertInstanceOf($expectedClass, $tag);
+    }
+
+    /**
+     * @return list<array{string, class-string}>
+     */
+    public static function provideCreateWithTagWithTypesData(): array
+    {
+        return [
+            ['@mixin Foo', Mixin::class],
+            ['@method string do()', Method::class],
+            ['@param Foo $bar', Param::class],
+            ['@property-read Foo $bar', PropertyRead::class],
+            ['@property Foo $bar', Property::class],
+            ['@property-write Foo $bar', PropertyWrite::class],
+            ['@return string', Return_::class],
+            ['@throws Throwable', Throws::class],
+            ['@var string $var', Var_::class],
+            ['@template-covariant string', TemplateCovariant::class],
         ];
     }
 }
