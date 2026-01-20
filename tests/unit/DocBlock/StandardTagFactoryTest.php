@@ -22,9 +22,11 @@ use phpDocumentor\Reflection\Assets\CustomServiceInterface;
 use phpDocumentor\Reflection\Assets\CustomTagFactory;
 use phpDocumentor\Reflection\DocBlock\Tags\Author;
 use phpDocumentor\Reflection\DocBlock\Tags\Deprecated;
+use phpDocumentor\Reflection\DocBlock\Tags\Extends_;
 use phpDocumentor\Reflection\DocBlock\Tags\Formatter;
 use phpDocumentor\Reflection\DocBlock\Tags\Formatter\PassthroughFormatter;
 use phpDocumentor\Reflection\DocBlock\Tags\Generic;
+use phpDocumentor\Reflection\DocBlock\Tags\Implements_;
 use phpDocumentor\Reflection\DocBlock\Tags\Method;
 use phpDocumentor\Reflection\DocBlock\Tags\Mixin;
 use phpDocumentor\Reflection\DocBlock\Tags\Param;
@@ -33,7 +35,10 @@ use phpDocumentor\Reflection\DocBlock\Tags\PropertyRead;
 use phpDocumentor\Reflection\DocBlock\Tags\PropertyWrite;
 use phpDocumentor\Reflection\DocBlock\Tags\Return_;
 use phpDocumentor\Reflection\DocBlock\Tags\See;
+use phpDocumentor\Reflection\DocBlock\Tags\Template;
 use phpDocumentor\Reflection\DocBlock\Tags\TemplateCovariant;
+use phpDocumentor\Reflection\DocBlock\Tags\TemplateExtends;
+use phpDocumentor\Reflection\DocBlock\Tags\TemplateImplements;
 use phpDocumentor\Reflection\DocBlock\Tags\Throws;
 use phpDocumentor\Reflection\DocBlock\Tags\Var_;
 use phpDocumentor\Reflection\Fqsen;
@@ -583,7 +588,14 @@ class StandardTagFactoryTest extends TestCase
             ['@return string', Return_::class],
             ['@throws Throwable', Throws::class],
             ['@var string $var', Var_::class],
-            ['@template-covariant string', TemplateCovariant::class],
+            ['@template T', Template::class],
+            ['@template-covariant T', TemplateCovariant::class],
+            ['@extends Foo<Bar>', Extends_::class],
+            ['@implements Foo<Bar>', Implements_::class],
+
+            // TODO: add factories for this tags
+            // ['@template-extends Foo', TemplateExtends::class],
+            // ['@template-implements Foo', TemplateImplements::class],
         ];
     }
 }
