@@ -154,7 +154,6 @@ final class StandardTagFactory implements TagFactory
 
         $tagFactory->addService($descriptionFactory);
         $tagFactory->addService($typeResolver);
-        $tagFactory->registerTagHandler('mixin', $phpstanTagFactory);
         $tagFactory->registerTagHandler('param', $phpstanTagFactory);
         $tagFactory->registerTagHandler('var', $phpstanTagFactory);
         $tagFactory->registerTagHandler('return', $phpstanTagFactory);
